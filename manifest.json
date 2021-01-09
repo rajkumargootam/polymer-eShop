@@ -1,0 +1,7 @@
+{
+  "name": "eshop",
+  "short_name": "eshop",
+  "description": "eccomerce website",
+  "start_url": "/",
+  "display": "standalone"
+}

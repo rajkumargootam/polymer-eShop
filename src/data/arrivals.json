@@ -1,0 +1,66 @@
+{
+  "results":
+ [
+   {
+                     "id": 1,
+                     "img": "./src/images/m1.jpg",
+                     "categoryId": "1",
+                     "productName": "Formal Blue Shirt",
+                     "price": 450
+
+                   },
+                  {
+                   "id": 2,
+                   "img": "./src/images/m2.jpg",
+                   "categoryId": "2",
+                   "productName": "Gabi Full Sleeve Sweatshirt",
+                   "price": 699
+                 },
+                 {
+                   "id": 3,
+                   "img": "././src/images/m3.jpg",
+                   "categoryId": "3",
+                   "productName": "Dark Blue Track Pants",
+                   "price": 1200
+                 },
+                 {
+                   "id": 4,
+                   "img": "./src/images/m4.jpg",
+                   "categoryId": "4",
+                   "productName": "Round Neck Black T-Shirt",
+                   "price": 400
+
+                 },
+                {
+                 "id": 5,
+                 "img": "./src/images/m5.jpg",
+                 "categoryId": "5",
+                 "productName": "Men's Black Jeans",
+                 "price": 1350
+               },
+               {
+                 "id": 6,
+                 "img": "././src/images/m6.jpg",
+                 "categoryId": "6",
+                 "productName": "Reversible",
+                 "price": 700,
+                 "rating": 4
+               },
+               {
+                 "id": 7,
+                 "img": "./src/images/m7.jpg",
+                 "categoryId": "7",
+                 "productName": "BeltAnalog Watch",
+                 "price": 2500
+
+               },
+              {
+               "id": 8,
+               "img": "./src/images/m8.jpg",
+               "categoryId": "8",
+               "productName": "Party Men's Blazer",
+               "price": 1600
+             }
+
+   ]
+ }

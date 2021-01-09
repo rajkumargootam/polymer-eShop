@@ -1,0 +1,33 @@
+  [
+        {
+          "id": 1,
+          "img": "./src/images/iphone.jpg",
+          "categoryId": "1",
+          "productName": "iPhone",
+          "price": 40000
+
+        },
+        {
+          "id": 2,
+          "img": "./src/images/earphone.png",
+          "categoryId": "2",
+          "productName": "Earphone",
+          "price": 2000
+        },
+        {
+          "id": 3,
+          "img": "././src/images/watch.png",
+          "categoryId": "3",
+          "productName": "Watch",
+          "price": 5000
+        },
+        {
+          "id": 4,
+          "img": "././src/images/ipad-black.jpg",
+          "categoryId": "3",
+          "productName": "iPad",
+          "price": 25000
+        }
+
+
+    ]
