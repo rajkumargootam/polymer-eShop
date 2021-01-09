@@ -18,48 +18,6 @@ import '@polymer/iron-icons/iron-icons.js';
 
 
 
-let productList = [
-                    {
-                      "id": 1,
-                      "img": "./src/images/iphone.jpg",
-                      "categoryId": "1",
-                      "productName": "iPhone",
-                      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                      "price": 40.00,
-                      "status": "none",
-                      "stock": "In stock",
-                      "review": "(250 review)",
-                      "rating": 4
-                    },
-                    {
-                      "id": 2,
-                      "img": "./src/images/casio-edifice-bg.jpg",
-                      "categoryId": "2",
-                      "productName": "Casio Edifice",
-                      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                      "price": 100,
-                      "status": "none",
-                      "stock": "In stock",
-                      "review": "(250 review)",
-                      "rating": 4
-                    },
-                    {
-                      "id": 3,
-                      "img": "././src/images/ipad-black.jpg",
-                      "categoryId": "2",
-                      "productName": "iPad",
-                      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                      "price": 100,
-                      "status": "none",
-                      "stock": "In stock",
-                      "review": "(250 review)",
-                      "rating": 4
-                    }
-
-  ];
-
-
-
 class MyShoppingCart extends PolymerElement {
   static get template() {
     return html`

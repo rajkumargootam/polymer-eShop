@@ -78,16 +78,63 @@ paper-button#addToCartBtn {
         iron-icon.star:last-of-type { color: var(--paper-grey-500); }
 
 
-        /*--------------------------------------Product code starts Here ----------------------*/
-                  div#notes{
-                    margin: 10px;
-                  }
-       /*--------------------------------------product Ends Here ----------------------*/
-               /*------------------product-bottom ends here --------- */
+        /*--------------------------------------Product-top ----------------------*/
 
-              .product-bottom {
-                  background: #f5f5f5;
+              .product-top
+              {
+              	width: 100%;
               }
+              .overlay-right
+              {
+              	display: block;
+              	opacity: 0;
+              	position: absolute;
+              	top: 10%;
+              	margin-left: 0;
+              	width: 70px;
+              }
+              .overlay-right .fa
+              {
+              	cursor: pointer;
+              	background-color: #fff;
+              	color: #000;
+              	height: 35px;
+              	width: 30px;
+              	padding: 7px;
+              	margin-top: 5%;
+              	margin-bottom: 5%;
+              }
+
+              .overlay-right .btn-secondary
+              {
+              	background: none !important;
+              	border: none !important;
+              	box-shadow: none !important;
+              }
+
+              .product-top:hover .overlay-right
+              {
+              	opacity: 1;
+              	margin-left: 5%;
+              	transition: 0.5s;
+              }
+
+              .product-top img{
+                padding: 0px;
+              }
+
+              @media only screen and (max-width: 980px)
+              {
+              	.product-top img
+              	{
+              	height: 360px;
+                width: 360px;
+              	}
+              }
+
+
+              /*--------------------------------------product-bottom ----------------------*/
+
               .product-bottom .star
               {
               	color: orange;
@@ -108,13 +155,12 @@ paper-button#addToCartBtn {
               	padding-bottom: 10px;
                 text-align: center;
               }
-              paper-button#addToCartBtn{
-                width: 100%;
-                margin: 10px 0px;
-              }
-        /*------------------product-bottom ends here --------- */
 
-        /*------------------footer ends here --------- */
+              .website-feature{
+                  box-shadow: none;
+              }
+
+
               .footer{
                 background: black;
               }
@@ -127,10 +173,17 @@ paper-button#addToCartBtn {
               .footer-content{
                   padding: 0 70px;
               }
-        /*------------------footer ends here --------- */
+
+              div#notes{
+                margin: 10px;
+              }
+
+
 
       </style>
-
+      <!-- iron-ajax element declaratively exposes network request functionality to Polymer's
+      data-binding system newarival-products json data.
+      handle-as: Specifies what data must be stored in the response  -->
 
       <!---On sale Product  starts here ------>
 
@@ -146,12 +199,18 @@ last-response="{{response}}">
 
 </iron-ajax>
 
-<div id="notes
+<div id="notes">
+  <!-- <dom-repeat items="[[response.results]]"> -->
   <dom-repeat items="[[response]]" id="productListItem">
     <template strip-whitespace="">
       <paper-card class="dark" style="">
       <div class="product-top">
-        <a href\$="[[section]]/[[item.id]]" on-click="getval"><img src="{{item.img}}" class=""></a>
+        <a href\$="#[[section]]/[[item.id]]" on-click="getval"><img src="{{item.img}}" class=""></a>
+        <div class="overlay-right">
+          <paper-icon-button icon="favorite"></paper-icon-button>
+          <paper-icon-button icon="visibility"></paper-icon-button>
+          <paper-icon-button icon="add-shopping-cart" on-click="productDetails"></paper-icon-button>
+        </div>
 
         <div class="product-bottom">
           <iron-icon class="star" icon="star"></iron-icon>
@@ -160,7 +219,7 @@ last-response="{{response}}">
           <iron-icon class="star" icon="star"></iron-icon>
           <iron-icon class="star" icon="star"></iron-icon>
           <h3>{{item.productName}}</h3>
-          <h5>₹{{item.price}}</h5>
+          <h5>{{item.price}}</h5>
           <paper-button raised on-click="addToCartBtn" class="custom indigo" id="addToCartBtn">Add to Cart</paper-button>
         </div>
       </div>
@@ -174,16 +233,64 @@ last-response="{{response}}">
       <!---On sale Product ends here ------>
     `;
     }
-    //properties section if rquired any
-     static get properties() { return {
-         section:{
-           type: String,
-           notify: true,
-           value:'MyProductDetails'
-       }
-     }
+    // //properties section if rquired any
+    //  static get properties() { return {
+    //    response: { type: Object },
+    //    //item for list of the products
+    //      productItem:{
+    //        type: Array,
+    //        notify: true,
+    //        value: null
+    //      },
+    //      //Existing entries products
+    //      existingEntries:{
+    //        type: Array,
+    //        value: null
+    //      },
+    //      //productlist list new array
+    //      productArraylist:{
+    //        type: Array,
+    //        value: null
+    //      }
+    //    }
+    //  }
+    //  ready() {
+    //    super.ready();
+    //  }
 
-     }
+// addToCartBtn(e){
+//   console.log(e);
+//   console.log(this.$.productListItem);
+//   this.productItem = this.$.productListItem.itemForElement(e.target);
+//   console.log(this.$.productListItem);
+//    this.$.selector.select(this.productItem);
+//
+//    //setting the json data into localstorage using locastorage
+//    this.existingEntries = JSON.parse(localStorage.getItem("setProductItemsInLocalStorage"));
+//    if (this.existingEntries == null) this.existingEntries = [];
+//    this.productArraylist = [];
+//
+//    //product amount
+//    var totalamount = this.productItem.price;
+//    console.log('totalamount :' + totalamount);
+//
+//    //adding products into the arraylist using array push
+//    this.productArraylist.push(this.productItem.img, this.productItem.productName, this.productItem.price,this.productItem.id)
+//    console.log(this.productArraylist);
+//
+//    //updataing products itteration multiple products
+//    window.localStorage.setItem('CurrentProductList', JSON.stringify(this.productArraylist));
+//
+//    //adding  products into existing products list
+//    this.existingEntries.push(this.productArraylist);
+//    //Finally store the all products using localstorage setitem
+//    window.localStorage.setItem("setProductItemsInLocalStorage", JSON.stringify(this.existingEntries));
+//
+//    //reload page once Sucessfully added to the cart
+//    location.reload();
+//
+// }
+
 
   }
 //@customElement MyProduct register to webbrowser
