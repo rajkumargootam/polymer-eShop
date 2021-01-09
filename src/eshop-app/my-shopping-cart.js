@@ -22,317 +22,349 @@ class MyShoppingCart extends PolymerElement {
   static get template() {
     return html`
 
-<style>
-/*
-I wanted to go with a mobile first approach, but it actually lead to more verbose CSS in this case, so I've gone web first. Can't always force things...
 
-Side note: I know that this style of nesting in SASS doesn't result in the most performance efficient CSS code... but on the OCD/organizational side, I like it. So for CodePen purposes, CSS selector performance be damned.
-*/
-/* Global settings */
-/* Global "table" column settings */
-.product-image {
-float: left;
-width: 20%;
-}
+    <style>
+    /*
+    I wanted to go with a mobile first approach, but it actually lead to more verbose CSS in this case, so I've gone web first. Can't always force things...
 
-.product-details {
-float: left;
-width: 37%;
-}
+    Side note: I know that this style of nesting in SASS doesn't result in the most performance efficient CSS code... but on the OCD/organizational side, I like it. So for CodePen purposes, CSS selector performance be damned.
+    */
+    /* Global settings */
+    /* Global "table" column settings */
+    .product-image {
+      float: left;
+      width: 20%;
+    }
 
-.product-price {
-float: left;
-width: 12%;
-}
+    .product-details {
+      float: left;
+      width: 37%;
+    }
 
-.product-quantity {
-float: left;
-width: 10%;
-}
+    .product-price {
+      float: left;
+      width: 12%;
+    }
 
-.product-removal {
-float: left;
-width: 9%;
-}
+    .product-quantity {
+      float: left;
+      width: 10%;
+    }
 
-.product-line-price {
-float: left;
-width: 12%;
-text-align: right;
-}
+    .product-removal {
+      float: left;
+      width: 9%;
+    }
 
-/* This is used as the traditional .clearfix class */
-.group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
-.group:after,
-.shopping-cart:after,
-.column-labels:after,
-.product:after,
-.totals-item:after {
-content: '';
-display: table;
-}
+    .product-line-price {
+      float: left;
+      width: 12%;
+      text-align: right;
+    }
 
-.group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
-clear: both;
-}
+    /* This is used as the traditional .clearfix class */
+    .group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
+    .group:after,
+    .shopping-cart:after,
+    .column-labels:after,
+    .product:after,
+    .totals-item:after {
+      content: '';
+      display: table;
+    }
 
-.group, .shopping-cart, .column-labels, .product, .totals-item {
-zoom: 1;
-}
+    .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+      clear: both;
+    }
 
-/* Apply clearfix in a few places */
-/* Apply dollar signs */
-.product .product-price:before, .product .product-line-price:before, .totals-value:before {
-content: '$';
-}
+    .group, .shopping-cart, .column-labels, .product, .totals-item {
+      zoom: 1;
+    }
 
-/* Body/Header stuff */
-/* body {
-padding: 0px 30px 30px 20px;
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 100;
-} */
+    /* Apply clearfix in a few places */
+    /* Apply dollar signs */
+    .product .product-price:before, .product .product-line-price:before, .totals-value:before {
+      content: '$';
+    }
 
-h1 {
-font-weight: 100;
-}
+    /* Body/Header stuff */
+    body {
+      padding: 0px 30px 30px 20px;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 100;
+    }
 
-label {
-color: #aaa;
-}
+    h1 {
+      font-weight: 100;
+    }
+    h1.headerText{
+      margin-left: 10px;
+    }
 
-.shopping-cart {
-margin-top: -45px;
-}
+    label {
+      color: #aaa;
+    }
 
-/* Column headers */
-.column-labels label {
-padding-bottom: 15px;
-margin-bottom: 15px;
-border-bottom: 1px solid #eee;
-}
-.column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
-text-indent: -9999px;
-}
+    .shopping-cart {
+      margin-top: -45px;
+    }
 
-/* Product entries */
-.product {
-margin-bottom: 20px;
-padding-bottom: 10px;
-border-bottom: 1px solid #eee;
-}
-.product .product-image {
-text-align: center;
-}
-.product .product-image img {
-width: 100px;
-}
-.product .product-details .product-title {
-margin-right: 20px;
-font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
-}
-.product .product-details .product-description {
-margin: 5px 20px 5px 0;
-line-height: 1.4em;
-}
-.product .product-quantity input {
-width: 40px;
-}
-.product .remove-product {
-border: 0;
-padding: 4px 8px;
-background-color: #c66;
-color: #fff;
-font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
-font-size: 12px;
-border-radius: 3px;
-}
-.product .remove-product:hover {
-background-color: #a44;
-}
+    /* Column headers */
+    .column-labels label {
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
+      text-indent: -9999px;
+    }
 
-/* Totals section */
-.totals{
-  width: 90%;
-}
-.totals .totals-item {
-float: right;
-clear: both;
-width: 100%;
-margin-bottom: 10px;
-}
-.totals .totals-item label {
-float: left;
-clear: both;
-width: 79%;
-text-align: right;
-}
-.totals .totals-item .totals-value {
-float: right;
-width: 21%;
-text-align: right;
-}
-.totals .totals-item-total {
-font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
-}
+    /* Product entries */
+    .product {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .product .product-image {
+      text-align: center;
+    }
+    .product .product-image img {
+      width: 100px;
+    }
+    .product .product-details .product-title {
+      margin-right: 20px;
+      font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+    }
+    .product .product-details .product-description {
+      margin: 5px 20px 5px 0;
+      line-height: 1.4em;
+    }
+    .product .product-quantity input {
+      width: 40px;
+    }
+    .product .remove-product {
+      border: 0;
+      padding: 4px 8px;
+      background-color: #c66;
+      color: #fff;
+      font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+      font-size: 12px;
+      border-radius: 3px;
+    }
+    .product .remove-product:hover {
+      background-color: #a44;
+    }
 
-.checkout {
-float: right;
-border: 0;
-margin-top: 20px;
-padding: 6px 25px;
-background-color: #6b6;
-color: #fff;
-font-size: 25px;
-border-radius: 3px;
-}
+    /* Totals section */
+    .totals .totals-item {
+      float: right;
+      clear: both;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .totals .totals-item label {
+      float: left;
+      clear: both;
+      width: 79%;
+      text-align: right;
+    }
+    .totals .totals-item .totals-value {
+      float: right;
+      width: 21%;
+      text-align: right;
+    }
+    .totals .totals-item-total {
+      font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+    }
 
-.checkout:hover {
-background-color: #494;
-}
+    .checkout {
+      float: right;
+      border: 0;
+      margin-top: 20px;
+      padding: 6px 25px;
+      background-color: #6b6;
+      color: #fff;
+      font-size: 25px;
+      border-radius: 3px;
+    }
 
-/* Make adjustments for tablet */
-@media screen and (max-width: 650px) {
-.shopping-cart {
-  margin: 0;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
+    .checkout:hover {
+      background-color: #494;
+    }
 
-.column-labels {
-  display: none;
-}
+    /* Make adjustments for tablet */
+    @media screen and (max-width: 650px) {
+      .shopping-cart {
+        margin: 0;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
 
-.product-image {
-  float: right;
-  width: auto;
-}
-.product-image img {
-  margin: 0 0 10px 10px;
-}
+      .column-labels {
+        display: none;
+      }
 
-.product-details {
-  float: none;
-  margin-bottom: 10px;
-  width: auto;
-}
+      .product-image {
+        float: right;
+        width: auto;
+      }
+      .product-image img {
+        margin: 0 0 10px 10px;
+      }
 
-.product-price {
-  clear: both;
-  width: 70px;
-}
+      .product-details {
+        float: none;
+        margin-bottom: 10px;
+        width: auto;
+        margin-left: 10px;
+      }
 
-.product-quantity {
-  width: 100px;
-}
-.product-quantity input {
-  margin-left: 20px;
-}
+      .product-price {
+        clear: both;
+        width: 70px;
+        margin: 10px;
+      }
 
-.product-quantity:before {
-  content: 'x';
-}
+      .product-quantity {
+        width: 100px;
+      }
+      .product-quantity input {
+        margin-left: 20px;
+      }
 
-.product-removal {
-  width: auto;
-}
+      .product-quantity:before {
+        content: 'x';
+      }
 
-.product-line-price {
-  float: right;
-  width: 70px;
-}
-}
-/* Make more adjustments for phone */
-@media screen and (max-width: 350px) {
-.product-removal {
-  /* float: right; */
-}
+      .product-removal {
+        width: auto;
+      }
 
-.product-line-price {
-  /* float: right;
-  clear: left; */
-  width: auto;
-  margin-top: 10px;
-}
+      .product-line-price {
+        float: right;
+        width: 70px;
+      }
+    }
+    /* Make more adjustments for phone */
+    @media screen and (max-width: 350px) {
+      .product-removal {
+        float: right;
+      }
 
-.product .product-line-price:before {
-  content: 'Item Total: $';
-}
+      .product-line-price {
+        float: right;
+        clear: left;
+        width: auto;
+        margin-top: 10px;
+      }
 
-.totals .totals-item label {
-  width: 60%;
-}
-.totals .totals-item .totals-value {
-  width: 40%;
-}
-}
-</style>
+      .product .product-line-price:before {
+        content: 'Item Total: $';
+      }
 
-</head>
+      .totals .totals-item label {
+        width: 60%;
+      }
+      .totals .totals-item .totals-value {
+        width: 40%;
+      }
+    }
+    </style>
+    <!-- navigating form one page to another page -->
+    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
 
+    <body >
 
-<h1>Shopping Cart</h1>
+      <h1 class="headerText">Shopping Cart</h1>
 
-<div class="shopping-cart">
-
-<div class="column-labels">
-  <label class="product-image">Image</label>
-  <label class="product-details">Product</label>
-  <label class="product-price">Price</label>
-  <!-- <label class="product-quantity">Quantity</label> -->
-  <label class="product-removal">Remove</label>
-  <label class="product-line-price" style="color:#FFF">Total</label>
-</div>
-
+    <div class="shopping-cart">
+    <!-- taable header names starst here -->
+      <div class="column-labels">
+        <label class="product-image">Image</label>
+        <label class="product-details">Product</label>
+        <label class="product-price">Price</label>
+        <!-- <label class="product-quantity">Quantity</label> -->
+        <label class="product-removal">Remove</label>
+        <!-- <label class="product-line-price">Total</label> -->
+      </div>
+  <!-- taable header names starst here -->
+<!-- itterating the UI element and display the data starts here -->
 <template is="dom-repeat" items="{{productListItem}}">
-  <div class="product">
-    <div class="product-image">
-      <img src="[[item.0]]">
-    </div>
-    <div class="product-details">
-      <div class="product-title">[[item.1]]</div>
-      <!-- <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p> -->
-    </div>
-    <div class="product-price">[[item.2]]</div>
-    <!-- <div class="product-quantity">
-      <input type="number" value="2" min="1">
-    </div> -->
-    <div class="product-removal">
-      <button class="remove-product" on-click="_removeFn">
-        Remove
-      </button>
-    </div>
-  </div>
+<!-- Displaying product img starts here -->
+      <div class="product">
+        <div class="product-image">
+          <img src="[[item.0]]">
+        </div>
+<!-- Displaying product img ends here -->
+<!-- Displaying product details starts here -->
+        <div class="product-details">
+          <div class="product-title">[[item.1]]</div>
+          <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+        </div>
+<!-- Displaying product details ends here -->
+<!-- Displaying product price ends here -->
+
+        <div class="product-price">[[item.2]]</div>
+        <!-- Displaying product details ends here -->
+
+        <!-- <div class="product-quantity">
+          <input type="number" value="2" min="1">
+        </div> -->
+        <!-- Remove button to delete the addto cart data -->
+        <div class="product-removal">
+          <button class="remove-product" on-click="_removeFn">
+            Remove
+          </button>
+        </div>
+        <!-- Remove button to delete the addto cart data -->
+        <!-- <div class="product-line-price">[[item.2]]</div> -->
+      </div>
 </template>
+<!-- itterating the UI element and display the data ends here -->
+<!-- Displaying the total amount,sub total ,tax ,shipping  starts here-->
+      <div class="totals">
+        <div class="totals-item">
+          <label>Subtotal</label>
+          <div class="totals-value" id="cart-subtotal">[[productPrice]]</div>
+        </div>
+        <div class="totals-item">
+          <label>Tax (5%)</label>
+          <div class="totals-value" id="cart-tax">[[tax]]</div>
+        </div>
+        <div class="totals-item">
+          <label>Shipping</label>
+          <div class="totals-value" id="cart-shipping">[[deliveryCharges]]</div>
+        </div>
+        <div class="totals-item totals-item-total">
+          <label>Grand Total</label>
+          <div class="totals-value" id="cart-total">[[productTotalPrice]]</div>
+        </div>
+      </div>
+      <!-- Displaying the total amount,sub total ,tax ,shipping  Ends Here-->
+
+          <!-- <button class="checkout">Checkout</button> -->
+          <!-- Button for Addto cart starts here -->
+          <paper-button raised on-click="_CheckboxBtn" class="custom checkout indigo" id="">Checkout</paper-button>
+          <!-- Button for Addto cart ends here -->
+    </div>
 
 
-<div class="totals">
-  <div class="totals-item">
-    <label>Subtotal</label>
-    <div class="totals-value" id="cart-subtotal">[[productPrice]]</div>
-  </div>
-  <div class="totals-item">
-    <label>Tax (5%)</label>
-    <div class="totals-value" id="cart-tax">[[tax]]</div>
-  </div>
-  <div class="totals-item">
-    <label>Shipping</label>
-    <div class="totals-value" id="cart-shipping">[[deliveryCharges]]</div>
-  </div>
-  <div class="totals-item totals-item-total">
-    <label>Grand Total</label>
-    <div class="totals-value" id="cart-total">[[productTotalPrice]]</div>
-  </div>
-</div>
 
-    <button class="checkout">Checkout</button>
+    </body>
 
-</div>
+
+
 
  `;
   }
 
   static get properties() { return {
+    //productItem for list of the products
+      productItem:{
+        type: Array,
+        notify: true,
+        value: null
+      },
     //productItem for list of the products
       productListItem:{
         type: Array,
@@ -367,8 +399,11 @@ background-color: #494;
     }
   }
 
+
+
   ready() {
       super.ready();
+      // _productlistfn()
 //products displying in cart page
     this.productListItem = JSON.parse(window.localStorage.getItem('setProductItemsInLocalStorage'));
 // total calculated amount in summarytotalamount
@@ -382,8 +417,25 @@ background-color: #494;
   }
 
 
-_removeFn(){
+_removeFn(e){
   console.log('clciked');
+  var indexId= e.model.index;
+  this.productListItem.forEach((item, i) => {
+    console.log(item, i);
+    if(indexId == i){
+      console.log('entred',i);
+      this.productListItem.splice(indexId, 1);
+
+    }
+      //set item back into localStorage
+      window.localStorage.setItem('setProductItemsInLocalStorage',JSON.stringify(this.productListItem));
+  });
+
+}
+
+_CheckboxBtn(){
+
+  this.set('route.path', '/myLogin');
 }
 
 

@@ -37,6 +37,10 @@ export class AddToCart extends PolymerElement {
         type: Number,
         value: null
       },
+      count: {
+          type: Number,
+          value: 0,
+        }
      }
    }
    ready() {
@@ -86,6 +90,9 @@ export class AddToCart extends PolymerElement {
         window.localStorage.setItem("totalprice", this.productItem.price);
     }
 
+      // Getting count
+      this.count++;
+       window.localStorage.setItem('count', this.count);
 
   }//Add to cart on click functnallity ends here
 }

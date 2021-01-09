@@ -9,6 +9,7 @@ import '@polymer/app-route/app-location.js';
 import '@polymer/app-route/app-route.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
+import '@polymer/paper-badge/paper-badge.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import { setPassiveTouchGestures, setRootPath } from '@polymer/polymer/lib/utils/settings.js';
 /*below is the reference path of mylogin.js component*/
@@ -45,9 +46,7 @@ class EshopApp extends PolymerElement {
     return html`
 
      <style include="eShop-styles">
-    iron-icon#icon{
-      color: orange;
-    }
+
       </style>
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
@@ -59,7 +58,8 @@ class EshopApp extends PolymerElement {
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
          <!-- Drawer content -->
          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-           <app-toolbar>eShop <a href="[[rootPath]]MyShoppingCart" id="shoppinCart"><paper-icon-button icon="shopping-cart" on-top="shoppinCart"></paper-icon-button></a> </app-toolbar>
+           <app-toolbar><span id="logoContent">eShop</span> <a href="[[rootPath]]MyShoppingCart" id="shoppinCart"><paper-icon-button id="shoppingIcon" icon="shopping-cart" on-top="shoppinCart"></paper-icon-button>
+           <paper-badge for="shoppingIcon" label="[[count]]" class="red"></paper-badge></a> </app-toolbar>
 
             <!-- <paper-icon-button id="cart-button" icon="shopping-cart" on-top="shoppinCart"></paper-icon-button> -->
 
@@ -68,8 +68,6 @@ class EshopApp extends PolymerElement {
              <a name="home" href="[[rootPath]]home">Home</a>
              <a name="MyProductDetails" href="[[rootPath]]MyProductDetails">Product Details</a>
              <a name="MyShoppingCart" href="[[rootPath]]MyShoppingCart">shopping Cart</a>
-             <!-- <a name="MyPayment" href="[[rootPath]]MyPayment">Payment </a> -->
-             <!-- <a name="MySuccessfully" href="[[rootPath]]MySuccessfully">successfully </a> -->
 
            </iron-selector>
          </app-drawer>
@@ -110,6 +108,10 @@ class EshopApp extends PolymerElement {
         type: Boolean,
         value:true
       },
+      count: {
+          type: Number,
+          value: 0,
+        },
 
       routeData: Object,
       subroute: Object,
@@ -138,7 +140,7 @@ class EshopApp extends PolymerElement {
 
     if (!page) {
       this.page = 'home';
-    } else if (['myLogin','home','MyProductDetails','MyShoppingCart','MyPayment','MySuccessfully'].indexOf(page) !== -1) {
+    } else if (['myLogin','home','MyProductDetails','MyShoppingCart','MyPayment','MySuccessfully','view404'].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -179,7 +181,6 @@ class EshopApp extends PolymerElement {
       case 'myLogin':
         import('./my-login.js');
         this.$.drawer.style.display = "none";
-      // this.$.appheader.style.display = "none";
         break;
       case 'home':
         import('./my-home.js');
@@ -199,7 +200,7 @@ class EshopApp extends PolymerElement {
             this.$.drawer.style.display = "none";
             break;
       case 'view404':
-        import('./my-login.js');
+        import('./my-view404.js');
         break;
     }
   }
@@ -208,12 +209,15 @@ shoppinCart(){
   this.set('route.path', '/MyShoppingCart');
 }
 
-//logout functnallity starts here
- logOut(){
-   this.set('route.path', '/myLogin');
+
+ ready() {
+     super.ready();
+
+//products displying in cart page
+   this.count = window.localStorage.getItem('count');
+   console.log(this.count);
+   console.log('count');
  }
-
-
 
 }
 

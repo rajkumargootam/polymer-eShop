@@ -24,6 +24,18 @@ $_documentContainer.innerHTML = `<dom-module id="eShop-styles">
       --paper-icon-button-ink-color: white;
     }
 
+paper-icon-button#shoppingIcon{
+      color: orange;
+    }
+
+    span#logoContent{
+      font-size: 30px;
+          padding: 20%;
+    }
+    .red {
+  --paper-badge-background: var(--paper-red-300);
+}
+
     .drawer-list {
       margin: 0 20px;
     }

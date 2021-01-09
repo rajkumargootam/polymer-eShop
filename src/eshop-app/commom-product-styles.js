@@ -47,7 +47,7 @@ paper-button#addToCartBtn {
         }
 
         paper-card.dark{
-          margin: 4px;
+          margin: 15px 4px;
         }
         iron-icon.star {
           --iron-icon-width: 16px;
