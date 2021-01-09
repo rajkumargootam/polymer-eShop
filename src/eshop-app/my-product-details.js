@@ -275,7 +275,6 @@ class MyProductDetails extends PolymerElement {
 		</div>
 
 <!-----------------------------------similar Product starts here --------------------->
-<my-success-card></my-success-card>
 <my-similar-products></my-similar-products>
 <!-----------------------------------similar Product ends here --------------------->
 
