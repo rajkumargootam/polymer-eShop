@@ -8,8 +8,8 @@
  * Import the Polymer iron-ajax to read the JSON
   Import the Polymer array-selector
  * Import the Base class AddToCart form addtocart component
+  * Imported the common-product-styles.js
  */
-
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-card/paper-card.js';
@@ -22,9 +22,10 @@ import { AddToCart } from './my-addtocart.js';
 import './commom-product-styles.js';
 
 
-
-
- // child-elements which takes the reffernce from the parent component my-addtocart.js
+/** Creating the new element as a class
+* child-elements which takes the reffernce from the parent component my-addtocart.js
+* class name should be in camel case
+*/
 
 class MyArrivals extends AddToCart {
 
@@ -36,7 +37,6 @@ class MyArrivals extends AddToCart {
     return html`
       <style include="commom-product-styles">
         /* import custom styles and included shared-products-style  */
-        /* custom elements default to display: inline */
       </style>
 
       <!-- To read the json data  using iron-ajax starts here

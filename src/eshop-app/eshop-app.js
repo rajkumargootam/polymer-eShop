@@ -21,7 +21,12 @@ import'./my-product-details.js';
 import'./my-icons.js';
 /*below is the reference path of my-shopping-cart.js component*/
  import'./my-shopping-cart.js';
+ /*below is the reference path of my-footer.js component*/
+  import'./my-footer.js';
+  /*below is the reference path of my-payment.js component*/
+   import'./my-payment.js';
 
+import './eShop-styles.js';
 
 // Gesture events like tap and track generated from touch will not be
 // preventable, allowing for better scrolling performance.
@@ -38,182 +43,11 @@ setRootPath(MyAppGlobals.rootPath);
 class EshopApp extends PolymerElement {
   static get template() {
     return html`
-      <style>
-      :host {
-      	--app-primary-color: #FFF;
-      	--app-secondary-color: black;
-      	display: block;
-      }
 
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
-      	display: none;
-      }
-
-      app-header {
-      	color: #fff;
-      	background-color: var(--app-primary-color);
-      }
-
-      app-header paper-icon-button {
-      	--paper-icon-button-ink-color: white;
-      }
-
-      .drawer-list {
-      	margin: 0 20px;
-      }
-
-      .drawer-list a {
-      	display: block;
-      	padding: 0 16px;
-      	text-decoration: none;
-      	color: var(--app-secondary-color);
-      	line-height: 40px;
-      }
-
-      .drawer-list a.iron-selected {
-      	color: black;
-      	font-weight: bold;
-      }
-
-      app-drawer#drawer {
-          box-shadow: 1px 2px 5px #888888;
-      }
-
-      app-header{
-        display: none;
-      }
-
-      /*------------------------------top nav bar code ----------------*/
-
-      .top-nav-bar {
-      	height: 57px;
-      	top: 0;
-      	position: sticky;
-      	background: #fff;
-      	margin-bottom: 20px;
-      	border-bottom: 3px solid orange;
-      	z-index: 2;
-      }
-
-      a#eshop {
-      	text-decoration: none;
-      }
-
-      .logo {
-      	height: 40px;
-      	margin: 0px 10px;
-      	color: orange;
-      }
-
-      .form-control {
-      	margin-top: 9px;
-      	margin-left: 30px;
-      	border: 1px solid orange !important;
-      	border-top-left-radius: 20px !important;
-      	border-bottom-left-radius: 20px !important;
-      	border-top-right-radius: 0 !important;
-      	border-bottom-right-radius: 0 !important;
-      	box-shadow: none !important;
-      }
-
-      .input-group-text {
-      	background: orange !important;
-      	border: 1px solid orange !important;
-      	margin: 9px 10px 0px 0 !important;
-      	border-top-left-radius: 0px !important;
-      	border-bottom-left-radius: 0px !important;
-      	border-top-right-radius: 20 !important;
-      	border-bottom-right-radius: 20 !important;
-      	cursor: pointer;
-      }
-
-      .search-box {
-      	display: inline-flex;
-      	width: 60%;
-      }
-
-      .fa-search {
-      	color: #fff;
-      }
-
-      .menu-bar {
-      	width: 40%;
-      	height: 57px;
-      	float: right;
-      }
-
-      .menu-bar ul {
-      	display: inline-flex;
-      	float: right;
-      }
-
-      .menu-bar ul li {
-      	border-left: 1px solid #fff;
-      	list-style-type: none;
-      	padding: 15px 35px;
-      	text-align: center;
-      	background-color: orange;
-      	cursor: pointer;
-      }
-
-      .menu-bar ul li a {
-      	color: #fff;
-      	font-size: 12px;
-      	font-weight: bold;
-      	text-decoration: none;
-      }
-
-      .fa-shopping-basket {
-      	margin-right: 5px;
-      }
-
-      paper-icon-button {
-      	color: orange;
-      }
-
-      paper-button#logOut-button {
-      	background: orange;
-      	font-size: 15px;
-      	margin: 12px;
-      }
-
-      .top-nav-bar {
-      	width: 100%;
-      }
-
-      paper-icon-button#search-button {
-      	color: #FFF;
-      }
-
-      input#searchInput {
-      	width: 100%;
-      }
-
-      input:focus {
-      	color: orange;
-      }
-
-      .menu-bar {
-      	text-align: right;
-      }
-
-      @media only screen and (max-width: 980px) {
-      	.top-nav-bar {
-      		height: 25px;
-      		border-bottom: 0;
-      	}
-      	.search-box {
-      		width: 100%;
-      	}
-      	.menu-bar {
-      		width: 100%;
-      	}
-      }
-
-
-      iron-pages {
-    padding-top: 30px;
-}
+     <style include="eShop-styles">
+    iron-icon#icon{
+      color: orange;
+    }
       </style>
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
@@ -234,6 +68,9 @@ class EshopApp extends PolymerElement {
              <a name="home" href="[[rootPath]]home">Home</a>
              <a name="MyProductDetails" href="[[rootPath]]MyProductDetails">Product Details</a>
              <a name="MyShoppingCart" href="[[rootPath]]MyShoppingCart">shopping Cart</a>
+             <!-- <a name="MyPayment" href="[[rootPath]]MyPayment">Payment </a> -->
+             <!-- <a name="MySuccessfully" href="[[rootPath]]MySuccessfully">successfully </a> -->
+
            </iron-selector>
          </app-drawer>
 
@@ -251,7 +88,12 @@ class EshopApp extends PolymerElement {
              <my-home name="home"></my-home>
              <my-product-details name="MyProductDetails"></my-product-details>
              <my-shopping-cart name="MyShoppingCart"></my-shopping-cart>
+             <my-payment name="MyPayment"></my-payment>
+             <my-successfully name="MySuccessfully"></my-successfully>
            </iron-pages>
+           <!-- added footer component starts here-->
+           <!-- <my-footer></my-footer> -->
+          <!-- added footer component ends here -->
          </app-header-layout>
        </app-drawer-layout>
     `;
@@ -296,7 +138,7 @@ class EshopApp extends PolymerElement {
 
     if (!page) {
       this.page = 'home';
-    } else if (['myLogin','home','MyProductDetails','MyShoppingCart'].indexOf(page) !== -1) {
+    } else if (['myLogin','home','MyProductDetails','MyShoppingCart','MyPayment','MySuccessfully'].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -309,7 +151,21 @@ class EshopApp extends PolymerElement {
 //To hide the app drawer in the login page
     if (page = 'login') {} else {
                 this.$.drawer.style.display = "block";
+
             }
+    if (page = 'MyPayment') {} else {
+                this.$.drawer.style.display = "block";
+
+            }
+    if (page = 'MySuccessfully') {} else {
+                this.$.drawer.style.display = "block";
+
+            }
+            if (page = 'home') {} else {
+                        this.$.drawer.style.display = "block";
+
+                  }
+
   }
 
 
@@ -334,6 +190,14 @@ class EshopApp extends PolymerElement {
       case 'MyShoppingCart':
         import('./my-shopping-cart.js');
         break;
+        case 'MyPayment':
+          import('./my-payment.js');
+          this.$.drawer.style.display = "none";
+          break;
+          case 'MySuccessfully':
+            import('./my-successfully.js');
+            this.$.drawer.style.display = "none";
+            break;
       case 'view404':
         import('./my-login.js');
         break;

@@ -13,7 +13,7 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
  */
 export class AddToCart extends PolymerElement {
 
-  //properties section if rquired any
+  //properties section to declare
    static get properties() { return {
      response: { type: Object },
      //productItem is to list of the products
@@ -22,7 +22,7 @@ export class AddToCart extends PolymerElement {
          notify: true,
          value: null
        },
-       //Existing entriesint to  productEntries
+       // creating an array productList
        productList:{
          type: Array,
          value: null
@@ -78,6 +78,7 @@ export class AddToCart extends PolymerElement {
     // adding tot product price amount
 
     this.productPrice = window.localStorage.getItem('totalprice');
+
     if(this.productPrice != null){
       this.productPrice = parseInt(this.productPrice);
       window.localStorage.setItem("totalprice", this.productPrice + this.productItem.price);

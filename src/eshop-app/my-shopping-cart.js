@@ -362,36 +362,7 @@ class MyShoppingCart extends PolymerElement {
 
 
 
-<div id="footer">
-<div class="flex-container">
-    <div class="footer-content">
-      <h2>Useful Links</h2>
-      <p>Privacy Policy</p>
-      <p>Terms of Use</p>
-      <p>Return Policy</p>
-      <p>Discount Coupons</p>
-    </div>
-
-    <div class="footer-content">
-      <h2>Company</h2>
-      <p>About Us</p>
-      <p>Contact Us</p>
-      <p>Career</p>
-      <p>Affiliate</p>
-    </div>
-
-
-    <div class="footer-content">
-    <h2>Follow Us On</h2>
-      <p><i class="fa fa-facebook-official"></i> Facebook</p>
-      <p><i class="fa fa-youtube-play"></i> Youtube</p>
-      <p><i class="fa fa-linkedin"></i> Linkedin</p>
-      <p><i class="fa fa-twitter"></i> Twitter</p>
-    </div>
-    </div>
-  <hr>
-  <p class="copyright"> Resived All Rights by eShop</p>
-</div> `;
+ `;
   }
 
   static get properties() { return {

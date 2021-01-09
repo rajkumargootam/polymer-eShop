@@ -13,6 +13,10 @@ import '@polymer/paper-card/paper-card.js';
 import '@polymer/paper-button/paper-button.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/iron-icons/iron-icons.js';
+/*below is the reference path of my-similar-products.js component*/
+ import'./my-similar-products.js';
+ /*below is the reference path of my-similar-products.js component*/
+  import'./my-success-card.js';
 
 
 
@@ -220,67 +224,9 @@ class MyProductDetails extends PolymerElement {
 
 /*--------------------------------------product-bottom ----------------------*/
 
-.footer{
-  background: black;
-}
-paper-card.footer-card{
-  width: 30%;
-  box-shadow: none;
-  background: black;
-  color: #FFF;
-}
-.footer-content{
-    padding: 0 70px;
-}
-/* paper-card#truck > #img{
-  vertical-align: middle;
-  width: 20%;
-} */
-
-/* paper-card.website-feature{
-      padding: 16px 40px;
-} */
 
 
-/*--------------------------------------footer ----------------------*/
 
-.feature-content{
-  flex-grow: 4;
-  text-align: center;
-}
-
-.flex-container{
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-}
-
-
-/* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
-  .flex-container {
-    flex-direction: column;
-  }
-}
-
-#footer{
-  background: black;
-  color: white;
-}
-
-.footer-content{
-  flex-grow: 4;
-  text-align: center;
-}
-
-.copyright
-{
-	margin-bottom: -80px;
-	text-align: center;
-	font-size: 15px;
-	padding-bottom:20px;
-  color: #FFF;
-}
 
 .widthSize{
       width: 20px;
@@ -329,136 +275,11 @@ paper-card.footer-card{
 		</div>
 
 <!-----------------------------------similar Product starts here --------------------->
-
-
-<!-- title div -->
-<div class="title-box">
-<h2>Similar</h2>
-</div>
-
-<!-- cards section -->
-<div id="notes">
-<paper-card class="dark">
-<div class="product-top">
-<!-- image  -->
-  <a href="product-details.html"><img src="./src/images/samsung_galaxy_note3_note3neo.jpg" style="width: 190px; height: 187px;" class=""></a>
-  <div class="overlay-right">
-  <!-- display button icons  -->
-    <paper-icon-button icon="favorite"></paper-icon-button>
-    <paper-icon-button icon="visibility"></paper-icon-button>
-    <paper-icon-button icon="add-shopping-cart"></paper-icon-button>
-  </div>
-
-  <div class="product-bottom">
-  <!-- display rating here  -->
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <!-- product Name -->
-      <h3>Samsung Galaxy Note3</h3>
-      <!-- product price -->
-      <h5>$40.00</h5>
-  </div>
-</div>
-</paper-card>
-<paper-card class="dark">
-<div class="product-top">
-  <a href="product-details.html"><img src="./src/images/cam.jpg" style="width: 223px; height: 187px;"  class=""></a>
-  <div class="overlay-right">
-    <paper-icon-button icon="favorite"></paper-icon-button>
-    <paper-icon-button icon="visibility"></paper-icon-button>
-    <paper-icon-button icon="add-shopping-cart"></paper-icon-button>
-  </div>
-
-  <div class="product-bottom">
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-      <h3>DSLR Camera</h3>
-      <h5>$40.00</h5>
-  </div>
-</div>
-</paper-card>
-<paper-card class="dark">
-<div class="product-top">
-  <a href="product-details.html"><img src="./src/images/mi-band.jpg" style="width: 190px; height: 187px;"  class=""></a>
-  <div class="overlay-right">
-    <paper-icon-button icon="favorite"></paper-icon-button>
-    <paper-icon-button icon="visibility"></paper-icon-button>
-    <paper-icon-button icon="add-shopping-cart"></paper-icon-button>
-  </div>
-
-  <div class="product-bottom">
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-      <h3>Mi Band</h3>
-      <h5>$40.00</h5>
-  </div>
-</div>
-</paper-card>
-<paper-card class="dark">
-<div class="product-top">
-  <a href="product-details.html"><img src="./src/images/Bose-Soundlink-Micro-Speakers.jpg" style="width: 200px; height: 187px;"  class=""></a>
-  <div class="overlay-right">
-    <paper-icon-button icon="favorite"></paper-icon-button>
-    <paper-icon-button icon="visibility"></paper-icon-button>
-    <paper-icon-button icon="add-shopping-cart"></paper-icon-button>
-  </div>
-
-  <div class="product-bottom">
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-    <iron-icon class="star" icon="star"></iron-icon>
-      <h3>Bose Soundlink Micro <br/> Speakers</h3>
-      <h5>$40.00</h5>
-  </div>
-</div>
-</paper-card>
-</div>
-
+<my-success-card></my-success-card>
+<my-similar-products></my-similar-products>
 <!-----------------------------------similar Product ends here --------------------->
 
-<!------------------------------------- footer section starts here ------------------------------------->
 
-<div id="footer">
-<div class="flex-container">
-    <div class="footer-content">
-      <h2>Useful Links</h2>
-      <p>Privacy Policy</p>
-      <p>Terms of Use</p>
-      <p>Return Policy</p>
-      <p>Discount Coupons</p>
-    </div>
-
-    <div class="footer-content">
-      <h2>Company</h2>
-      <p>About Us</p>
-      <p>Contact Us</p>
-      <p>Career</p>
-      <p>Affiliate</p>
-    </div>
-
-    <div class="footer-content">
-    <h2>Follow Us On</h2>
-      <p><i class="fa fa-facebook-official"></i> Facebook</p>
-      <p><i class="fa fa-youtube-play"></i> Youtube</p>
-      <p><i class="fa fa-linkedin"></i> Linkedin</p>
-      <p><i class="fa fa-twitter"></i> Twitter</p>
-    </div>
-    </div>
-  <hr>
-  <p class="copyright"> Resived All Rights by eShop</p>
-</div>
-<!------------------------------------- footer section ends here ------------------------------------->
 
 
     `;

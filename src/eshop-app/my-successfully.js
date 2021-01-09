@@ -4,12 +4,13 @@
  */
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import'./my-payment-crad.js';
+import'./my-success-card.js';
 
 
 /** Creating the new element as a class
 * class name should be in camel case
 */
-class MyPayment extends PolymerElement {
+class MySuccessfully extends PolymerElement {
 
   // Provide a DOM template for the element
   static get template() {
@@ -86,12 +87,11 @@ class MyPayment extends PolymerElement {
       <paper-card class="rate">
       <!-- Content inside the paper card -->
         <div class="card-content">
-        <h3>Payment</h3>
-          <my-payment-card></my-payment-card>
+          <my-success-card></my-success-card>
         </div>
         <div class="card-actions">
-            <!-- Paper buuton for login using polymer component -->
-          <paper-button raised on-click="_payment" class="custom indigo">Proceed</paper-button>
+            <!-- Paper buuton for home page redirect using polymer component -->
+          <paper-button raised on-click="_logOut" class="custom indigo">Continue Shopping</paper-button>
         </div>
       </paper-card>
       <!-- To display card I'm using paper card -->
@@ -105,10 +105,12 @@ class MyPayment extends PolymerElement {
       <!---payment ends here ------>
     `;
     }
-_payment(){
-        this.set('route.path', '/MySuccessfully');
-}
+
+    //logout functnallity starts here
+     _logOut(){
+       window.location.href ="home";
+     }
 
   }
 /*register element to the browser*/
-window.customElements.define('my-payment', MyPayment);
+window.customElements.define('my-successfully', MySuccessfully);

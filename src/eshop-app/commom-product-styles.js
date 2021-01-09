@@ -128,6 +128,44 @@ div#notes{
   margin: 10px;
 
 }
+
+/*--------------------------------------footer styles starts here----------------------*/
+
+
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+      #footer{
+        background: black;
+        color: white;
+      }
+
+      .footer-content{
+        flex-grow: 4;
+        text-align: center;
+      }
+
+      .copyright
+      {
+        margin-bottom: -80px;
+        text-align: center;
+        font-size: 15px;
+        padding-bottom:20px;
+        color: #FFF;
+      }
+  /*--------------------------------------footer styles ends here----------------------*/
+
 </style>
  </template>
 </dom-module>`;

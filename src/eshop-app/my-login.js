@@ -1,7 +1,15 @@
+/**
+ *Import the Polymer library
+ * Import the Polymer paper-card
+ * Import the Polymer paper-button
+ * Import the Polymer paper-input
+ */
+
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-card/paper-card.js';
 import '@polymer/paper-button/paper-button.js';
 import '@polymer/paper-input/paper-input.js';
+import'./login-styles.js'
 
 /**
  * @customElement
@@ -29,101 +37,37 @@ class MyLogin extends PolymerElement {
 
   static get template() {
     return html`
-      <style>
+      <style include="login-styles">
 
-          iron-pages{
-            display:none !important;
-          }
-          .center {
-            width:100%;
-            text-align:center;
-          }
-          paper-card{
-            width:75%;
-            display:inline-block;
-            margin-top: 3%;
-          }
-
-
-          paper-button.indigo {
-            background-color: var(--paper-indigo-500);
-            color: white;
-            --paper-button-raised-keyboard-focus: {
-              background-color: var(--paper-pink-a200) !important;
-              color: white !important;
-            };
-          }
-          paper-button.disabled {
-            color: white;
-            background-color: bisque;
-          }
-
-        .login-form{
-
-        position: absolute;
-        top: 45%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 50%;
-}
-
-.card-actions{
-  text-align: center;
-}
-
-paper-button.custom{
-  width: 100%;
-  font-size: 20px;
-  font-weight: 700;
-    margin: 20px 0px;
-}
-
-.card-content h3{
-  text-align: center;
-    font-size: 30px;
-    text-transform: uppercase;
-}
-
-@media (max-width: 800px) {
-  paper-card{
-    width:100%;
-}
-
-.login-form{
-
-width: 80%;
-}
-
-
-app-drawer-layout{
-
-  background-color: #74b9ff;
-}
-
-app-header{
-  display: none;
-}
 
   </style>
 
-
+<!--  navigation path from one page to another -->
 <app-location route="{{route}}"></app-location>
+<!-- Login form starts here -->
 <div class="login-form">
+<!-- To display card I'm using paper card -->
   <paper-card class="rate">
-
+  <!-- Content inside the paper card -->
     <div class="card-content">
     <h3>Login</h3>
-      <paper-input id="User_name" name="user" float-label label="Username" value="{{username}}" required auto-validate pattern="[a-zA-Z]*" char-counter maxlength="10" error-message="Please enter the username!"></paper-input>
-      <paper-input id="Password" type="password" name="Password" float-label label="Password" value="{{password}}" char-counter maxlength="10" required auto-validate error-message="Please enter the password!"></paper-input>
+    <!-- Paper input for text fields using polymer component -->
+      <paper-input id="User_name" name="user" float-label label="Username" value="{{username}}" required auto-validate pattern="[a-zA-Z]*" error-message="Please enter the username!"></paper-input>
+      <paper-input id="Password" type="password" name="Password" float-label label="Password" value="{{password}}" required auto-validate error-message="Please enter the password!"></paper-input>
+    <!--  Paper input for text fields from polymer component -->
     </div>
     <div class="card-actions">
+        <!-- Paper buuton for login using polymer component -->
       <paper-button raised on-click="_login" class="custom indigo">Login</paper-button>
     </div>
   </paper-card>
+  <!-- To display card I'm using paper card -->
 </div>
+<!-- Login form ends here -->
     `;
   }
 
+  //properties section to declare
   static get properties() {
     return {
       username: {
@@ -139,13 +83,8 @@ app-header{
     };
 
   }
-
+  // login functnallity starts here
   _login(){
-          //getting the values of username and pasword
-          // var un = this.$.User_name.value;
-          // console.log('un: '+ un);
-          // var pw = this.$.Password.value;
-          // console.log('pw: '+ pw);
 
           var unArray = ["rajkumar", "username2"];  // as many as you like
         	var pwArray = ["123456", "password2",];  // the corresponding passwords;
@@ -153,16 +92,15 @@ app-header{
 
     for (var i=0; i <unArray.length; i++) {
       if ((this.username == unArray[i]) && (this.password == pwArray[i])) {
-        console.log(unArray[i]);
-        console.log(pwArray[i]);
-      this.set('route.path', '/myDashboard');
+      this.set('route.path', '/MyPayment');
         return true;
       }else{
         alert('Please enter the valid credentials');
         return false;
       }
     }
-  } //closing of _login()
+  }
+   // login functnallity ends here
 
 
 }

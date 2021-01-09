@@ -24,7 +24,7 @@ import './commom-product-styles.js';
 * child-elements which takes the reffernce from the parent component my-addtocart.js
 * class name should be in camel case
 */
-class MyProduct extends AddToCart {
+class MySimilarProducts extends AddToCart {
 
   // Provide a DOM template for the element
   static get template() {
@@ -37,16 +37,16 @@ class MyProduct extends AddToCart {
       /* import custom styles and included commom-product-styles  */
     </style>
 
-      <!---On sale Product  starts here ------>
+      <!---New Arrivals starts here ------>
   <!-- display the title name -->
 <div class="title-box">
-  <h2>On Sale</h2>
+  <h2>New Arrivals</h2>
 </div>
 <!-- To read the json data  using iron-ajax starts here
 auto is use when we want to display the data on page load -->
     <iron-ajax
     auto
-    url="./src/data/data.json"
+    url="./src/data/similar.json"
     handle-as="json"
     last-response="{{response}}">
 
@@ -59,7 +59,7 @@ auto is use when we want to display the data on page load -->
   <dom-repeat items="[[response]]" id="productListItem">
           <!-- creating template to dispaly the UI content -->
     <template strip-whitespace="">
-        <!-- for creating the cards  usig paper-card  starst here-->
+        <!-- for creating the cards  usig paper-card -->
       <paper-card class="dark" style="">
       <div class="product-top">
               <!-- on click on this image anchor tag navigate to the product details page -->
@@ -77,7 +77,7 @@ auto is use when we want to display the data on page load -->
           <!--  displaying the product name-->
           <h3>{{item.productName}}</h3>
           <!--  displaying the product price-->
-          <h5>₹{{item.price}}</h5>
+          <h5>{{item.price}}</h5>
           <!-- Button for Addto cart starts here -->
           <paper-button raised on-click="addToCartBtn" class="custom indigo" id="addToCartBtn">Add to Cart</paper-button>
           <!-- Button for Addto cart ends here -->
@@ -85,7 +85,7 @@ auto is use when we want to display the data on page load -->
         <!-- this product bottom is mainly for maintain the icons, product name, price $ to manage the div css  ends here -->
       </div>
     </paper-card>
-<!-- for creating the cards  usig paper-card  Ends here-->
+<!-- for creating the cards  usig paper-card -->
   </template>
 <!-- creating template to dispaly the UI content ends here-->
   </dom-repeat>
@@ -94,11 +94,11 @@ auto is use when we want to display the data on page load -->
     <!-- Using  array-selector we are going to push the product details into arraylist -->
     <array-selector id="selector" items="{{response}}" selected="{{selected}}" multi toggle></array-selector>
 
-      <!---On sale Product ends here ------>
+      <!---New Arrivals ends here ------>
     `;
     }
 
 
   }
 /*register element to the browser*/
-window.customElements.define('my-product', MyProduct);
+window.customElements.define('my-similar-products', MySimilarProducts);
