@@ -38,7 +38,7 @@ class MyProductDetails extends PolymerElement {
 <div id="single-product">
   <div class="flex-container">
       <div class="product-content flex-item-left">
-        <iron-image sizing="cover" id="example-sizing-cover" alt="The Polymer logo." src="./src/images/headphones-3683983_960_720.jpg"></iron-image>
+        <iron-image sizing="cover" id="example-sizing-cover" alt="The Polymer logo." src="./src/images/mobile.jpg"></iron-image>
       </div>
 
       <div class="product-content flex-item-left">

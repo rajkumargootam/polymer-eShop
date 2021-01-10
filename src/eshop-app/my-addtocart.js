@@ -56,7 +56,7 @@ export class AddToCart extends PolymerElement {
 
       //Storing the data in to local storage
       this.productList = JSON.parse(localStorage.getItem("setProductItemsInLocalStorage"));
-      console.log('this.productEntries :' + this.productList);
+      console.log('this.productList :' + this.productList);
       if (this.productList == null) this.productList = [];
       this.produclistArray = [];
 
@@ -64,8 +64,11 @@ export class AddToCart extends PolymerElement {
       var totalprice = this.productItem.price;
       console.log('totalamount :' + totalprice);
 
+      var description = this.productItem.description;
+      console.log('Description :'+description);
+
       //Pushing the productItem to produclistArray
-      this.produclistArray.push(this.productItem.img, this.productItem.productName, this.productItem.price,this.productItem.id, totalprice)
+      this.produclistArray.push(this.productItem.img, this.productItem.productName, this.productItem.price,this.productItem.id, totalprice, description)
       console.log(this.produclistArray);
 
       // Getting current selected values and setting to CurrentProductList

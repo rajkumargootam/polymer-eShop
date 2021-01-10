@@ -4,7 +4,8 @@
           "img": "./src/images/iphone.jpg",
           "categoryId": "1",
           "productName": "iPhone",
-          "price": 40000
+          "price": 40000,
+          "description":"The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface."
 
         },
         {
@@ -12,21 +13,24 @@
           "img": "./src/images/earphone.png",
           "categoryId": "2",
           "productName": "Earphone",
-          "price": 2000
+          "price": 2000,
+          "description":"pTron Bassbuds Urban in-Ear True Wireless Bluetooth 5.0 Headphones with Deep Bass, Touch Control Earbuds, IPX4 Water & Sweat Resistance, Noise Isolation, Voice Assistance & Built-in Mic"
         },
         {
           "id": 3,
           "img": "././src/images/watch.png",
           "categoryId": "3",
           "productName": "Watch",
-          "price": 5000
+          "price": 5000,
+          "description":"a watch that displays the time in numerical digits rather than by hands on a dial"
         },
         {
           "id": 4,
           "img": "././src/images/ipad-black.jpg",
           "categoryId": "3",
           "productName": "iPad",
-          "price": 25000
+          "price": 25000,
+          "description":"The iPad is a tablet computer developed by Apple. It is smaller than a typical laptop, but significantly larger than the average smartphone. "
         }
 
 

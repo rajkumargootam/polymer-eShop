@@ -41,7 +41,7 @@ class MyShoppingCart extends PolymerElement {
 
       
       <!-- Button for Addto cart starts here -->
-      <paper-button raised class="continueShopping"><iron-icon icon="shopping-cart"></iron-icon>Continue Shopping </paper-button>
+      <paper-button  on-click="_redirecBtn"  raised class="continueShopping"><iron-icon icon="shopping-cart"></iron-icon>Continue Shopping </paper-button>
       <!-- Button for Addto cart ends here -->
       <h1 class="headerText">Shopping Cart</h1>
     <div class="shopping-cart">
@@ -66,7 +66,7 @@ class MyShoppingCart extends PolymerElement {
 <!-- Displaying product details starts here -->
         <div class="product-details">
           <div class="product-title">[[item.1]]</div>
-          <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+          <p class="product-description">[[item.5]]</p>
         </div>
 <!-- Displaying product details ends here -->
 <!-- Displaying product price ends here -->
@@ -176,7 +176,7 @@ class MyShoppingCart extends PolymerElement {
 
   ready() {
       super.ready();
-      // _productlistfn()
+      // _productlistfn(){
 //for displying product in cart page
     this.productListItem = JSON.parse(window.localStorage.getItem('setProductItemsInLocalStorage'));
 // total calculated amount in summarytotalamount
@@ -191,23 +191,37 @@ class MyShoppingCart extends PolymerElement {
 
 // Removing the product from the add to cart page
 _removeFn(e){
-  //getting the particular index id
-  var indexId= e.model.index;
-  // comparing the index id with productListItem id by iterating
-  this.productListItem.forEach((item, i) => {
-    if(indexId == i){
-      // removing the matched id from shoppingcart
-      this.productListItem.splice(indexId, 1);
-      //set item back into localStorage
-      window.localStorage.setItem('setProductItemsInLocalStorage', JSON.stringify( this.productListItem));
-      this.count=this.count-1;
-      window.localStorage.setItem('count', this.count);
-      this.productListItem =  this.productListItem = JSON.parse(window.localStorage.getItem("setProductItemsInLocalStorage"));
-
-    }
+    //getting the particular index id
+    var indexId= e.model.index;
+    // comparing the index id with productListItem id by iterating
+    this.productListItem.forEach((item, i) => {
+      if(indexId == i){
+        // removing the matched id from shoppingcart
+        this.productListItem.splice(indexId, 1);
+        //set item back into localStorage
+        window.localStorage.setItem('setProductItemsInLocalStorage', JSON.stringify( this.productListItem));
+        // decreasing the cout value
+        this.count=this.count-1;
+        window.localStorage.setItem('count', this.count);
+        // setting the 
+      this.productListItem = JSON.parse(window.localStorage.getItem("setProductItemsInLocalStorage"));
+      // total calculated amount in summarytotalamount
+      this.productPrice = window.localStorage.getItem('totalprice');
+      // total calculated amount in summarytotalamount
+          this.deliveryCharges = this.productPrice * 0.02;
+      // total calculated amount in summarytotalamount
+          this.tax = this.productPrice * 0.05;
+      // total calculated amount in summarytotalamount
+          this.productTotalPrice = Math.round(Number(this.productPrice) + Number(this.deliveryCharges) + Number(this.tax));
+      // reload page
+          location.reload();
+      }
   });
+  }
+  _redirecBtn(){
+    this.set('route.path', '/home');
+  }
 
-}
 
 // checkout function
 _CheckboxBtn(){

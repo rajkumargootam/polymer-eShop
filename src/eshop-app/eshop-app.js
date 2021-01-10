@@ -123,7 +123,7 @@ class EshopApp extends PolymerElement {
       // Getting the product list length
       count: {
           type: Number,
-          value: 0,
+          value: window.localStorage.getItem("count"),
         },
 
       routeData: Object,
@@ -213,16 +213,16 @@ shoppinCart(){
 }
 
 
- ready() {
-     super.ready();
+//  ready() {
+//      super.ready();
 
-    //products displying in cart page
-     this.count = window.localStorage.getItem('count');
-     if(this.count == null){
-       this.count = window.localStorage.setItem('count',0);
-     }
+//     //products displying in cart page
+//      this.count = window.localStorage.getItem('count');
+//      if(this.count == null){
+//        this.count = window.localStorage.setItem('count',0);
+//      }
 
- }
+//  }
 
 
 

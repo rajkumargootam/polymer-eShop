@@ -63,7 +63,7 @@ auto is use when we want to display the data on page load -->
       <paper-card class="dark" style="">
       <div class="product-top">
               <!-- on click on this image anchor tag navigate to the product details page -->
-        <a href="MyProductDetails" on-click="getval"><img src="[[item.img]]"></a>
+        <a href="MyProductDetails"><img src="[[item.img]]"></a>
 
 <!-- this product bottom is mainly for maintain the icons, product name, price $ to manage the div css  -->
         <div class="product-bottom">

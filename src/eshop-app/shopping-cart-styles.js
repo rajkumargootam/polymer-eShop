@@ -60,7 +60,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
     /* Apply clearfix in a few places */
     /* Apply dollar signs */
     .product .product-price:before, .product .product-line-price:before, .totals-value:before {
-      content: '$';
+      content: '₹';
     }
 
     /* Body/Header stuff */
