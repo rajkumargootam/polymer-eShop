@@ -48,6 +48,9 @@ class MyPaymentCard extends PolymerElement {
       <!-- expiredate input field Starts Here-->
     <gold-cc-expiration-input label="Date"></gold-cc-expiration-input>
       <!-- expiredate input field Ends Here-->
+      <!-- cvv code starts here -->
+      <paper-input name="cardCvv"  placeholder="CVV"  auto-validate pattern="[0-9]{3}" maxlength="3" error-message="CVV" required ></paper-input>
+      <!-- cvv code ends here -->
       <!---payment Ends Here ------>
     `;
     }

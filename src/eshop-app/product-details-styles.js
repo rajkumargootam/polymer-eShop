@@ -92,20 +92,20 @@ $_documentContainer.innerHTML = `<dom-module id="product-details-styles">
  
 
 /*--------------------------------------product-description ----------------------*/
-.product-description h4
-{
-margin-top: 50px;
-color: orange;
-}
-.product-description p
-{
-margin-top: 30px;
-}
+  .product-description h4
+  {
+  margin-top: 50px;
+  color: orange;
+  }
+  .product-description p
+  {
+  margin-top: 30px;
+  }
 
-.product-description hr
-{
-margin-top: 30px;
-}
+  .product-description hr
+  {
+  margin-top: 30px;
+  }
 
 /*--------------------------------------product-bottom ----------------------*/
 
