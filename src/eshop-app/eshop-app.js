@@ -1,3 +1,22 @@
+/**
+ * Below are the dependencies of polymer 
+ * using node we need to install it
+ * Import the Polymer library
+ * Import the Polymer paper-card
+ * Import the app-layout/app-drawer/
+ * Import the polymer/app-layout/app-drawer-layout/
+ * Import the polymer/app-layout/app-header/
+ * Import the polymer/app-layout/app-header-layout/
+ * Import the polymer/app-layout/app-scroll-effects/
+ * Import the polymer/app-layout/app-toolbar/app-toolbar.js';
+ * Import the polymer/app-route/app-location.js';
+ * Import the polymer/app-route/app-route.js';
+ * Import the polymer/iron-pages/iron-pages.js';
+ * Import the polymer/iron-selector/iron-selector.js';
+ * Import the polymer/paper-badge/paper-badge.js';
+ * Import the polymer/paper-icon-button/paper-icon-button.js';
+ */
+
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
@@ -22,12 +41,10 @@ import'./my-product-details.js';
 import'./my-icons.js';
 /*below is the reference path of my-shopping-cart.js component*/
  import'./my-shopping-cart.js';
- /*below is the reference path of my-footer.js component*/
-  import'./my-footer.js';
-  /*below is the reference path of my-payment.js component*/
-   import'./my-payment.js';
-
-import './eShop-styles.js';
+/*below is the reference path of my-payment.js component*/
+  import'./my-payment.js';
+/*below is the reference path of eShop-styles.js component*/
+  import './eShop-styles.js';
 
 // Gesture events like tap and track generated from touch will not be
 // preventable, allowing for better scrolling performance.
@@ -48,7 +65,7 @@ class EshopApp extends PolymerElement {
      <style include="eShop-styles">
 
       </style>
-
+      <!-- Navigating to the currentt location -->
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
       </app-location>
 
@@ -67,7 +84,7 @@ class EshopApp extends PolymerElement {
              <!-- <a name="myLogin" href="[[rootPath]]myLogin">Login</a> -->
              <a name="home" href="[[rootPath]]home">Home</a>
              <a name="MyProductDetails" href="[[rootPath]]MyProductDetails">Product Details</a>
-             <a name="MyShoppingCart" href="[[rootPath]]MyShoppingCart">shopping Cart</a>
+             <a name="MyShoppingCart" href="[[rootPath]]MyShoppingCart">Shopping Cart</a>
 
            </iron-selector>
          </app-drawer>
@@ -103,11 +120,7 @@ class EshopApp extends PolymerElement {
         reflectToAttribute: true,
         observer: '_pageChanged'
       },
-      /*to hide the button based on the navShoe condition*/
-      navShow:{
-        type: Boolean,
-        value:true
-      },
+      // Getting the product list length
       count: {
           type: Number,
           value: 0,
@@ -127,16 +140,6 @@ class EshopApp extends PolymerElement {
 
   _routePageChanged(page) {
      // Show the corresponding page according to the route.
-     //
-     // If no page was found in the route data, page will be an empty string.
-     // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
-     // if (this.page == 'myLogin') {
-     //   console.log('navShow : '+ this.navShow);
-     //   this.navShow = false;
-     // }else{
-     //   this.navShow = true;
-     // }
-
 
     if (!page) {
       this.page = 'home';
@@ -150,7 +153,7 @@ class EshopApp extends PolymerElement {
     if (!this.$.drawer.persistent) {
       this.$.drawer.close();
     }
-//To hide the app drawer in the login page
+//To hide the app drawer in the home,login page,Mypayment,MySuccessfully
     if (page = 'login') {} else {
                 this.$.drawer.style.display = "block";
 
@@ -163,10 +166,10 @@ class EshopApp extends PolymerElement {
                 this.$.drawer.style.display = "block";
 
             }
-            if (page = 'home') {} else {
-                        this.$.drawer.style.display = "block";
+    if (page = 'home') {} else {
+                this.$.drawer.style.display = "block";
 
-                  }
+          }
 
   }
 
@@ -191,14 +194,14 @@ class EshopApp extends PolymerElement {
       case 'MyShoppingCart':
         import('./my-shopping-cart.js');
         break;
-        case 'MyPayment':
-          import('./my-payment.js');
-          this.$.drawer.style.display = "none";
-          break;
-          case 'MySuccessfully':
-            import('./my-successfully.js');
-            this.$.drawer.style.display = "none";
-            break;
+      case 'MyPayment':
+        import('./my-payment.js');
+        this.$.drawer.style.display = "none";
+        break;
+      case 'MySuccessfully':
+        import('./my-successfully.js');
+        this.$.drawer.style.display = "none";
+        break;
       case 'view404':
         import('./my-view404.js');
         break;
@@ -213,11 +216,15 @@ shoppinCart(){
  ready() {
      super.ready();
 
-//products displying in cart page
-   this.count = window.localStorage.getItem('count');
-   console.log(this.count);
-   console.log('count');
+    //products displying in cart page
+     this.count = window.localStorage.getItem('count');
+     if(this.count == null){
+       this.count = window.localStorage.setItem('count',0);
+     }
+
  }
+
+
 
 }
 

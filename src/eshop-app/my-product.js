@@ -63,7 +63,7 @@ auto is use when we want to display the data on page load -->
       <paper-card class="dark" style="">
       <div class="product-top">
               <!-- on click on this image anchor tag navigate to the product details page -->
-        <a href\$="#[[section]]/[[item.id]]" on-click="getval"><img src="{{item.img}}" class=""></a>
+        <a href="MyProductDetails" on-click="getval"><img src="[[item.img]]"></a>
 
 <!-- this product bottom is mainly for maintain the icons, product name, price $ to manage the div css  -->
         <div class="product-bottom">
@@ -75,9 +75,9 @@ auto is use when we want to display the data on page load -->
           <iron-icon class="star" icon="star"></iron-icon>
           <!-- bleow icons are displayed for rating the product ends here-->
           <!--  displaying the product name-->
-          <h3>{{item.productName}}</h3>
+          <h3>[[item.productName]]</h3>
           <!--  displaying the product price-->
-          <h5>₹{{item.price}}</h5>
+          <h5>₹[[item.price]]</h5>
           <!-- Button for Addto cart starts here -->
           <paper-button raised on-click="addToCartBtn" class="custom indigo" id="addToCartBtn">Add to Cart</paper-button>
           <!-- Button for Addto cart ends here -->
@@ -92,7 +92,7 @@ auto is use when we want to display the data on page load -->
 <!-- for iterating array object we are using dom-repeat  ends here-->
 </div>
     <!-- Using  array-selector we are going to push the product details into arraylist -->
-    <array-selector id="selector" items="{{response}}" selected="{{selected}}" multi toggle></array-selector>
+    <array-selector id="selector" items="[[response]]" selected="[[selected]]" multi toggle></array-selector>
 
       <!---On sale Product ends here ------>
     `;

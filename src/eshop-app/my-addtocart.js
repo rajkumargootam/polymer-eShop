@@ -5,11 +5,11 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
  * @author
  * @class AddToCart
  * @event on-click
- * export class AddToCart for accessing the properties and methods to the child class
+ * exporting the class  from parent(AddToCart) to access the properties and methods to child class
  * objects type creat Array, object
- * value  string,number
- * item is arraylist, productEntries, productArraylist
- * type Number for ,productCost
+ * value  string, number
+ * item is arraylist, productList, productArraylist
+ * type Number for ,productPrice
  */
 export class AddToCart extends PolymerElement {
 
@@ -22,7 +22,7 @@ export class AddToCart extends PolymerElement {
          notify: true,
          value: null
        },
-       // creating an array productList
+       //creating an array productList
        productList:{
          type: Array,
          value: null
@@ -37,6 +37,7 @@ export class AddToCart extends PolymerElement {
         type: Number,
         value: null
       },
+      //total product count
       count: {
           type: Number,
           value: 0,
@@ -89,10 +90,10 @@ export class AddToCart extends PolymerElement {
       } else{
         window.localStorage.setItem("totalprice", this.productItem.price);
     }
-
-      // Getting count
-      this.count++;
+// Getting productlist count       
+      this.count = this.productList.length;
        window.localStorage.setItem('count', this.count);
+
 
   }//Add to cart on click functnallity ends here
 }

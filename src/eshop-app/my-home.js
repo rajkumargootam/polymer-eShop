@@ -21,53 +21,16 @@ import '@polymer/iron-ajax/iron-ajax.js';
 import'./my-product.js';
 /*below is the reference path of my-arrivals.js component*/
  import'./my-arrivals.js';
+ /*below is the reference path of my-footer.js component*/
+import'./my-footer.js'
+/*below is the reference path of home-styles.js component*/
+import'./home-styles.js'
 
 
 export class MyHome extends PolymerElement {
   static get template() {
     return html`
-      <style is="custom-style">
-        :host {
-          display: block;
-
-          padding: 10px;
-        }
-
-    /*---------------------------Featured-categories styles starts here----------------------*/
-        #example-sizing-cover {
-                width: 355px;
-                height: 250px;
-                background: #ddd;
-              }
-    /*----------------------------Featured-categories styles ends here----------------------*/
-
-    /*--------------------------------------website-feature styles stars here----------------------*/
-
-              div#website-features {
-                  margin: 20px;
-              }
-
-              .feature-content{
-                flex-grow: 4;
-                text-align: center;
-              }
-
-              .flex-container{
-                display: flex;
-                flex-direction: row;
-                align-items: stretch;
-              }
-
-
-        /* Responsive layout - makes a one column layout instead of a two-column layout */
-              @media (max-width: 800px) {
-                .flex-container {
-                  flex-direction: column;
-                }
-              }
-
-  /*--------------------------------------website-feature styles ends here----------------------*/
-
+      <style include="home-styles">
 
       </style>
 
@@ -122,7 +85,9 @@ export class MyHome extends PolymerElement {
 
                                   <!---website feature section ends here ------>
 
-
+                            <!-- footer component code starts here  -->
+                              <my-footer></my-footer>
+                            <!-- footer component code ends here  -->
     `;
   }
 
