@@ -296,5 +296,5 @@ class MyProductDetails extends PolymerElement {
 
 
 }
-
+/*register element to the browser*/
 window.customElements.define('my-product-details', MyProductDetails);
