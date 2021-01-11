@@ -32,7 +32,7 @@ export class AddToCart extends PolymerElement {
          type: Array,
          value: null
        },
-      //productPrice is the total amount
+      //Price of the product
       productPrice:{
         type: Number,
         value: null
@@ -41,7 +41,13 @@ export class AddToCart extends PolymerElement {
       count: {
           type: Number,
           value: 0,
-        }
+        },
+       //total product amount
+      totalPrice: {
+        type: Number,
+        value: 0,
+      }
+
      }
    }
    ready() {
@@ -51,25 +57,22 @@ export class AddToCart extends PolymerElement {
    addToCartBtn(e){
 
      this.productItem = this.$.productListItem.itemForElement(e.target);
-     console.log(this.$.productListItem);
       this.$.selector.select(this.productItem);
 
       //Storing the data in to local storage
       this.productList = JSON.parse(localStorage.getItem("setProductItemsInLocalStorage"));
-      console.log('this.productList :' + this.productList);
       if (this.productList == null) this.productList = [];
       this.produclistArray = [];
 
       //Getting the Product price value
-      var totalprice = this.productItem.price;
-      console.log('totalamount :' + totalprice);
+      var productPrice = this.productItem.price;
 
+      //Getting the Product description 
       var description = this.productItem.description;
-      console.log('Description :'+description);
 
       //Pushing the productItem to produclistArray
-      this.produclistArray.push(this.productItem.img, this.productItem.productName, this.productItem.price,this.productItem.id, totalprice, description)
-      console.log(this.produclistArray);
+      this.produclistArray.push(this.productItem.img, this.productItem.productName, this.productItem.price,this.productItem.id,productPrice, description)
+  
 
       // Getting current selected values and setting to CurrentProductList
       window.localStorage.setItem('CurrentProductList', JSON.stringify(this.produclistArray));
@@ -83,20 +86,19 @@ export class AddToCart extends PolymerElement {
       //reload the page to set the values in shopping-cart
       location.reload();
 
-    // adding tot product price amount
 
-    this.productPrice = window.localStorage.getItem('totalprice');
-
-    if(this.productPrice != null){
-      this.productPrice = parseInt(this.productPrice);
-      window.localStorage.setItem("totalprice", this.productPrice + this.productItem.price);
-      } else{
-        window.localStorage.setItem("totalprice", this.productItem.price);
-    }
 // Getting productlist count       
       this.count = this.productList.length;
        window.localStorage.setItem('count', this.count);
-
+       // Add to cart - Finding the totoal amount incrementaly for multiple product items  
+      this.totalPrice = window.localStorage.getItem('totalprice');
+      if(this.count < 2){
+        this.totalPrice =  this.productItem.price;
+        window.localStorage.setItem('totalprice', this.totalPrice);
+      }else{
+       this.totalPrice =  parseFloat(this.totalPrice) +  parseFloat(this.productItem.price);
+       window.localStorage.setItem('totalprice', this.totalPrice);
+      }
 
   }//Add to cart on click functnallity ends here
 }

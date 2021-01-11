@@ -92,10 +92,10 @@ class MyShoppingCart extends PolymerElement {
       <div class="totals">
         <div class="totals-item">
           <label>Subtotal</label>
-          <div class="totals-value" id="cart-subtotal">[[productPrice]]</div>
+          <div class="totals-value" id="cart-subtotal">[[totalPrice]]</div>
         </div>
         <div class="totals-item">
-          <label>Tax (5%)</label>
+          <label>Tax (1%)</label>
           <div class="totals-value" id="cart-tax">[[tax]]</div>
         </div>
         <div class="totals-item">
@@ -127,12 +127,7 @@ class MyShoppingCart extends PolymerElement {
   }
 
   static get properties() { return {
-    //productItem for list of the products
-      productItem:{
-        type: Array,
-        notify: true,
-        value: null
-      },
+
     //productItem for list of the products
       productListItem:{
         type: Array,
@@ -144,16 +139,6 @@ class MyShoppingCart extends PolymerElement {
         type: Number,
         value: null
       },
-      //Creating product list Array
-      produclistArray:{
-        type: Array,
-        value: null
-      },
-     //productPrice is the total amount of the product
-     productPrice:{
-       type: Number,
-       value: null
-     },
      //tax for the all the products
      tax:{
        type: Number,
@@ -164,10 +149,16 @@ class MyShoppingCart extends PolymerElement {
        type: Number,
        value: null
      },
+     // Getting count from window object
      count: {
       type: Number,
-      value: window.localStorage.getItem("count"),
+      value: 0,
     },
+    //final total price  
+    totalPrice: {
+      type: Number,
+      value: 0,
+    }
 
     }
   }
@@ -176,43 +167,46 @@ class MyShoppingCart extends PolymerElement {
 
   ready() {
       super.ready();
-      // _productlistfn(){
 //for displying product in cart page
     this.productListItem = JSON.parse(window.localStorage.getItem('setProductItemsInLocalStorage'));
 // total calculated amount in summarytotalamount
-    this.productPrice = window.localStorage.getItem('totalprice');
+    this.totalPrice = window.localStorage.getItem('totalprice');
 // total calculated amount in summarytotalamount
-    this.deliveryCharges = this.productPrice * 0.02;
+    this.deliveryCharges = this.totalPrice * 0.02;
 // total calculated amount in summarytotalamount
-    this.tax = this.productPrice * 0.01;
+    this.tax = this.totalPrice * 0.01;
 // total calculated amount in summarytotalamount
-    this.productTotalPrice = Math.round(Number(this.productPrice) + Number(this.deliveryCharges) + Number(this.tax));
+    this.productTotalPrice = Math.round(Number(this.totalPrice) + Number(this.deliveryCharges) + Number(this.tax));
   }
 
 // Removing the product from the add to cart page
 _removeFn(e){
     //getting the particular index id
     var indexId= e.model.index;
+    var totalPrice = 0;
     // comparing the index id with productListItem id by iterating
     this.productListItem.forEach((item, i) => {
       if(indexId == i){
+         // subtract the deleted product price from the total price
+        totalPrice = this.totalPrice - this.productListItem[i][2];      
         // removing the matched id from shoppingcart
         this.productListItem.splice(indexId, 1);
         //set item back into localStorage
         window.localStorage.setItem('setProductItemsInLocalStorage', JSON.stringify( this.productListItem));
-        // decreasing the cout value
-        this.count=this.count-1;
+        // getting the length affter deleting item
+        this.count= this.productListItem.length;
         window.localStorage.setItem('count', this.count);
-        // setting the 
+        // getting the productListItem
       this.productListItem = JSON.parse(window.localStorage.getItem("setProductItemsInLocalStorage"));
+        // setting the total price to this.total price
+        window.localStorage.setItem('totalprice', totalPrice);
+        this.totalPrice = totalPrice;
       // total calculated amount in summarytotalamount
-      this.productPrice = window.localStorage.getItem('totalprice');
+          this.deliveryCharges = totalPrice * 0.02;
       // total calculated amount in summarytotalamount
-          this.deliveryCharges = this.productPrice * 0.02;
+          this.tax = totalPrice * 0.01;
       // total calculated amount in summarytotalamount
-          this.tax = this.productPrice * 0.05;
-      // total calculated amount in summarytotalamount
-          this.productTotalPrice = Math.round(Number(this.productPrice) + Number(this.deliveryCharges) + Number(this.tax));
+          this.productTotalPrice = Math.round(Number(totalPrice) + Number(this.deliveryCharges) + Number(this.tax));
       // reload page
           location.reload();
       }

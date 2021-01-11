@@ -118,6 +118,7 @@ class EshopApp extends PolymerElement {
       page: {
         type: String,
         reflectToAttribute: true,
+          // observer method
         observer: '_pageChanged'
       },
       // Getting the product list length
@@ -132,6 +133,7 @@ class EshopApp extends PolymerElement {
     };
 
   }
+
   static get observers() {
     return [
       '_routePageChanged(routeData.page)'
@@ -207,23 +209,10 @@ class EshopApp extends PolymerElement {
         break;
     }
   }
-//onClick its navigating to MyShoppingCart
+//onClick its navigating to MyShoppingCart page
 shoppinCart(){
   this.set('route.path', '/MyShoppingCart');
 }
-
-
-//  ready() {
-//      super.ready();
-
-//     //products displying in cart page
-//      this.count = window.localStorage.getItem('count');
-//      if(this.count == null){
-//        this.count = window.localStorage.setItem('count',0);
-//      }
-
-//  }
-
 
 
 }
