@@ -72,7 +72,7 @@ class MySuccessCard extends PolymerElement {
         <i class="checkmark">✓</i>
       </div>
         <h1>Success</h1>
-        <p>We received your purchase request;<br/> we'll be in touch shortly!</p>
+        <p>Your order has placed successfully <br/> it will delever in 3 working days.</p>
       </div>
       <!---success card Ends Here ------>
   </body>

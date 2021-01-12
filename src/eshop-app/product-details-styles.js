@@ -40,6 +40,7 @@ $_documentContainer.innerHTML = `<dom-module id="product-details-styles">
     paper-button#addTocartProduct {
       background: orange;
       color: #FFF;
+      font-family: 'lato', sans-serif;
   }
 
     /*--------------------------------------Featured-categories starts here----------------------*/
@@ -76,6 +77,7 @@ $_documentContainer.innerHTML = `<dom-module id="product-details-styles">
     .title-box h2
     {
       font-size: 16px;
+      font-family: 'lato', sans-serif;
     }
 
     .title-box::after
@@ -92,14 +94,25 @@ $_documentContainer.innerHTML = `<dom-module id="product-details-styles">
  
 
 /*--------------------------------------product-description ----------------------*/
+  h2{
+    font-family: 'roboto', sans-serif;
+  }
+
+  p{
+    font-family: 'lato', sans-serif;
+  }
   .product-description h4
   {
   margin-top: 50px;
   color: orange;
+  font-family: 'roboto', sans-serif;
   }
   .product-description p
   {
   margin-top: 30px;
+  font-family: system-ui;
+    text-align: justify;
+}
   }
 
   .product-description hr

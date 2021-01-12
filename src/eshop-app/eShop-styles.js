@@ -20,18 +20,23 @@ $_documentContainer.innerHTML = `<dom-module id="eShop-styles">
       background-color: var(--app-primary-color);
     }
 
-    app-header paper-icon-button {
-      --paper-icon-button-ink-color: white;
-    }
-
-paper-icon-button#shoppingIcon{
+    paper-icon-button{
       color: orange;
     }
 
-    span#logoContent{
-      font-size: 30px;
-          padding: 20%;
+    app-header paper-icon-button {
+      --paper-icon-button-ink-color: orange;
     }
+
+    paper-icon-button#shoppingIcon{
+          color: orange;
+        }
+    span#logoContent{
+        font-size: 30px;
+        font-family: 'lato', sans-serif;
+        font-weight: 600;
+      }
+    
     .red {
   --paper-badge-background: var(--paper-red-300);
 }
@@ -46,6 +51,7 @@ paper-icon-button#shoppingIcon{
       text-decoration: none;
       color: var(--app-secondary-color);
       line-height: 40px;
+      font-family: 'roboto', sans-serif;
     }
 
     .drawer-list a.iron-selected {
@@ -53,17 +59,24 @@ paper-icon-button#shoppingIcon{
       font-weight: bold;
     }
 
+    a#shoppinCart {
+      position: absolute;
+      right: 40px;
+      top: 25px;
+  }
+
+  paper-badge.red{
+    left: 25px;
+    top: -5px;
+  }
+
     app-drawer#drawer {
         box-shadow: 1px 2px 5px #888888;
     }
 
-    app-header{
-      display: none;
-    }
-
-
-
-
+    // app-header{
+    //   display: none;
+    // }
     iron-pages {
   padding-top: 30px;
   }

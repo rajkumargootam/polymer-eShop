@@ -63,7 +63,7 @@ class EshopApp extends PolymerElement {
     return html`
 
      <style include="eShop-styles">
-
+     
       </style>
       <!-- Navigating to the currentt location -->
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
@@ -75,10 +75,9 @@ class EshopApp extends PolymerElement {
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
          <!-- Drawer content -->
          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-           <app-toolbar><span id="logoContent">eShop</span> <a href="[[rootPath]]MyShoppingCart" id="shoppinCart"><paper-icon-button id="shoppingIcon" icon="shopping-cart" on-top="shoppinCart"></paper-icon-button>
-           <paper-badge for="shoppingIcon" label="[[count]]" class="red"></paper-badge></a> </app-toolbar>
+           <app-toolbar><span id="logoContent">eShop</span></app-toolbar>
 
-            <!-- <paper-icon-button id="cart-button" icon="shopping-cart" on-top="shoppinCart"></paper-icon-button> -->
+           
 
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
              <!-- <a name="myLogin" href="[[rootPath]]myLogin">Login</a> -->
@@ -93,7 +92,9 @@ class EshopApp extends PolymerElement {
          <app-header-layout has-scrolling-region="">
            <app-header slot="header" condenses="" reveals="" effects="waterfall">
              <app-toolbar>
-               <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
+               <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
+               <a href="[[rootPath]]MyShoppingCart" id="shoppinCart"><paper-icon-button id="shoppingIcon" icon="shopping-cart" on-top="shoppinCart"></paper-icon-button>
+           <paper-badge for="shoppingIcon" label="[[count]]" class="red"></paper-badge></a>
              </app-toolbar>
            </app-header>
            <!-- </template> -->
@@ -113,6 +114,7 @@ class EshopApp extends PolymerElement {
        </app-drawer-layout>
     `;
   }
+  
   static get properties() {
     return {
       page: {
@@ -158,7 +160,6 @@ class EshopApp extends PolymerElement {
 //To hide the app drawer in the home,login page,Mypayment,MySuccessfully
     if (page = 'login') {} else {
                 this.$.drawer.style.display = "block";
-
             }
     if (page = 'MyPayment') {} else {
                 this.$.drawer.style.display = "block";

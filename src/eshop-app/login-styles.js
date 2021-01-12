@@ -4,10 +4,20 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<dom-module id="login-styles">
   <template>
     <style>
+    .error-text {
+      text-align: right;
+      color: red;
+    }
+
+ #shoppinCart {
+      display: none;
+      color:#FFF;
+    }   
 
     iron-pages{
       display:none !important;
     }
+
     .center {
       width:100%;
       text-align:center;
@@ -23,22 +33,21 @@ $_documentContainer.innerHTML = `<dom-module id="login-styles">
       background-color: var(--paper-indigo-500);
       color: white;
       --paper-button-raised-keyboard-focus: {
-        background-color: var(--paper-pink-a200) !important;
+        background-color: var(--paper-indigo-500) !important;
         color: white !important;
       };
     }
-    paper-button.disabled {
-      color: white;
-      background-color: bisque;
-    }
+      paper-button.disabled {
+        color: white;
+        background-color: bisque;
+      }
 
-    .login-form{
-
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
+    .login-form {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
     }
 
     .card-actions{
@@ -63,24 +72,24 @@ $_documentContainer.innerHTML = `<dom-module id="login-styles">
     width:100%;
     }
 
-    .login-form{
-
-    width: 80%;
+    .login-form {
+      width: 80%;
     }
 
 
     app-drawer-layout{
-
-    background-color: #74b9ff;
+      background-color: #74b9ff;
     }
 
     app-header{
-    display: none;
+      display: none;
     }
 
     div#footer{
-    display: none;
+      display: none;
     }
+
+
 
 
 

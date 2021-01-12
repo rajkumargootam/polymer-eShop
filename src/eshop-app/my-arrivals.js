@@ -70,11 +70,13 @@ class MyArrivals extends AddToCart {
                 <!-- this product bottom is mainly for maintain the icons, product name, price $ to manage the div css  -->
               <div class="product-bottom">
         <!-- bleow icons are displayed for rating the product starts here-->
+        <div class="star-icons">
                 <iron-icon class="star" icon="star"></iron-icon>
                 <iron-icon class="star" icon="star"></iron-icon>
                 <iron-icon class="star" icon="star"></iron-icon>
                 <iron-icon class="star" icon="star"></iron-icon>
                 <iron-icon class="star" icon="star"></iron-icon>
+        </div>
         <!-- bleow icons are displayed for rating the product ends here-->
         <!--  displaying the product name-->
                   <h3>{{item.productName}}</h3>

@@ -17,6 +17,14 @@ $_documentContainer.innerHTML = `<dom-module id="home-styles">
                 height: 250px;
                 background: #ddd;
               }
+
+              
+    @media only screen and (max-width: 768px)
+    {
+      #example-sizing-cover {
+        width: 100%;
+    }
+  }
     /*----------------------------Featured-categories styles ends here----------------------*/
 
     /*--------------------------------------website-feature styles stars here----------------------*/
@@ -28,6 +36,7 @@ $_documentContainer.innerHTML = `<dom-module id="home-styles">
               .feature-content{
                 flex-grow: 4;
                 text-align: center;
+                font-family: 'lato', sans-serif;
               }
 
               .flex-container{

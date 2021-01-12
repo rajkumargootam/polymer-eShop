@@ -109,7 +109,7 @@ class MyShoppingCart extends PolymerElement {
       </div>
       <!-- Displaying the total amount,sub total ,tax ,shipping  Ends Here-->
 
-          <!-- <button class="checkout">Checkout</button> -->
+          <!-- <button class="checkout">Check out</button> -->
           <!-- Button for Addto cart starts here -->
           <paper-button raised on-click="_CheckboxBtn" class="custom checkout indigo" id="">Checkout</paper-button>
           <!-- Button for Addto cart ends here -->

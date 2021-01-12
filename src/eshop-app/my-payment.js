@@ -51,6 +51,10 @@ class MyPayment extends PolymerElement {
   .card-actions{
     text-align: center;
   }
+    a#shoppinCart {
+      display: none;
+  }
+
 
   paper-button.custom{
     width: 100%;

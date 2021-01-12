@@ -31,8 +31,8 @@ class MySuccessfully extends PolymerElement {
         background-color: var(--paper-indigo-500);
         color: white;
         --paper-button-raised-keyboard-focus: {
-          background-color: var(--paper-pink-a200) !important;
-          color: white !important;
+          background-color: var(--paper-indigo-500) !important;
+          color: white !important; 
         };
       }
       paper-button.disabled {

@@ -34,16 +34,13 @@ class MyPaymentCard extends PolymerElement {
 
       <!---Payment  starts here ------>
       <!-- credicard input field starts Here -->
-      <!-- <gold-cc-input
+       <gold-cc-input
             auto-validate
             label="Card number"
             error-message="Enter valid visa or mastercard!"
             card-types='["visa", "mastercard"]'
             required maxlength="16" pattern="[0-9]{16}">
-      </gold-cc-input> -->
-        <paper-input id="" name="" float-label label="Card Name"
-        required auto-validate  maxlength="16" pattern="[0-9]{16}" error-message="Enter valid visa or mastercard!">
-        </paper-input>
+     </gold-cc-input>
             <!-- credicard input field Ends Here-->
       <!-- expiredate input field Starts Here-->
     <gold-cc-expiration-input label="Date"></gold-cc-expiration-input>

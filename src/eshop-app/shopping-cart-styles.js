@@ -66,7 +66,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
     /* Body/Header stuff */
     body {
       padding: 0px 30px 30px 20px;
-      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-weight: 100;
     }
 
@@ -75,6 +75,8 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
     }
     h1.headerText{
       margin-left: 10px;
+      font-family: 'Roboto', sans-serif,'Lato', sans-serif;
+      font-weight: 300;
     }
 
     label {
@@ -90,6 +92,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       padding-bottom: 15px;
       margin-bottom: 15px;
       border-bottom: 1px solid #eee;
+      font-family: 'Lato', sans-serif;
     }
     .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
       text-indent: -9999px;
@@ -109,11 +112,12 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
     }
     .product .product-details .product-title {
       margin-right: 20px;
-      font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+      font-family: 'Roboto', sans-serif;
     }
     .product .product-details .product-description {
       margin: 5px 20px 5px 0;
-      line-height: 1.4em;
+      line-height: 1.4em;  
+      font-family: 'Lato', sans-serif;
     }
     .product .product-quantity input {
       width: 40px;
@@ -123,7 +127,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       padding: 4px 8px;
       background-color: #c66;
       color: #fff;
-      font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+      font-family: 'Roboto', sans-serif;
       font-size: 12px;
       border-radius: 3px;
     }
@@ -136,7 +140,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       float: right;
       clear: both;
       width: 100%;
-      margin-bottom: 10px;
+      margin: 10px;
     }
     .totals .totals-item label {
       float: left;
@@ -148,6 +152,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       float: right;
       width: 21%;
       text-align: right;
+      font-family: 'roboto', sans-serif;
     }
     .totals .totals-item-total {
       font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
@@ -157,17 +162,15 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       float: right;
       border: 0;
       margin-top: 20px;
-      padding: 6px 25px;
+      padding: 6px 10px;
       background-color: #6b6;
       color: #fff;
-      font-size: 25px;
+      font-size: 20px;
       border-radius: 3px;
+      font-family: 'roboto', sans-serif;
     }
 
-    // .checkout:hover {
-    //   background-color: #494;
-    // }
-
+  
     /* Make adjustments for tablet */
     @media screen and (max-width: 650px) {
       .shopping-cart {
@@ -254,6 +257,8 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       float: right;
       background: orange;
       color: #FFF;
+      font-size: 14px;
+      font-family: 'roboto', sans-serif;
     }
 
     </style>

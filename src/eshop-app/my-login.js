@@ -8,6 +8,7 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-card/paper-card.js';
 import '@polymer/paper-button/paper-button.js';
+import '@polymer/iron-form/iron-form.js';
 import '@polymer/paper-input/paper-input.js';
 import'./login-styles.js'
 
@@ -46,6 +47,8 @@ class MyLogin extends PolymerElement {
 <app-location route="{{route}}"></app-location>
 <!-- Login form starts here -->
 <div class="login-form">
+<iron-form id="formOne" on-iron-form-response="onResponse">
+<form method="post" action="https://httpbin.org/post" is="iron-form">
 <!-- To display card I'm using paper card -->
   <paper-card class="rate">
   <!-- Content inside the paper card -->
@@ -56,13 +59,17 @@ class MyLogin extends PolymerElement {
       <paper-input id="Password" type="password" name="Password" float-label label="Password" value="{{password}}" required auto-validate error-message="Please enter the password!"></paper-input>
     <!--  Paper input for text fields from polymer component -->
     </div>
+    <div class="error-text">{{errormsg}}</div>
     <div class="card-actions">
         <!-- Paper buuton for login using polymer component -->
-      <paper-button raised on-click="_login" class="custom indigo">Login</paper-button>
+      <paper-button raised  class="custom indigo" on-tap="submitHandler">Login</paper-button>
     </div>
   </paper-card>
   <!-- To display card I'm using paper card -->
+  </form>
+  </iron-form>
 </div>
+
 <!-- Login form ends here -->
     `;
   }
@@ -77,32 +84,40 @@ class MyLogin extends PolymerElement {
       password:{
         type: String,
         notify:true
+      },
+      errormsg:{
+        type:String
+      },
+      formData:{
+        type:String
       }
-
 
     };
 
   }
-  // login functnallity starts here
-  _login(){
 
-          var unArray = ["rajkumar", "username2"];  // as many as you like
-        	var pwArray = ["123456", "password2",];  // the corresponding passwords;
-
-
-    for (var i=0; i <unArray.length; i++) {
-      if ((this.username == unArray[i]) && (this.password == pwArray[i])) {
-      this.set('route.path', '/MyPayment');
-        return true;
-      }else{
-        alert('Please enter the valid credentials');
-        return false;
-      }
-    }
-  }
    // login functnallity ends here
+   submitHandler() {
+    // form submit used to formone is from id
+   this.$.formOne.submit();
+   };
 
+   onResponse(e){
+    console.log('e.detail.response.form', e.detail.response.form)
 
+    this.formData = e.detail.response.form
+    console.log('this.formData', this.formData);
+
+    if(this.formData.user != 'rajkumar' && this.formData.password != 'admin'){
+      this.errormsg = 'invalid credentials';
+      console.log('this.formData invalid')
+    }else{
+      console.log('this.formData valid' )
+      this.errormsg ="";
+      this.set('route.path', '/MyPayment');
+    }
+    
+   }
 }
 /*register element to the browser*/
 window.customElements.define('my-login', MyLogin);
