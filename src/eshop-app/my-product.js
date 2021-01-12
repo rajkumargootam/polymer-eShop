@@ -18,6 +18,7 @@ import '@polymer/iron-ajax/iron-ajax.js';
 import '@polymer/polymer/lib/elements/array-selector.js';
 import { AddToCart } from './my-addtocart.js';
 import './commom-product-styles.js';
+import '@polymer/paper-spinner/paper-spinner.js';
 
 
 /** Creating the new element as a class
@@ -36,7 +37,7 @@ class MyProduct extends AddToCart {
     <style include="commom-product-styles">
       /* import custom styles and included commom-product-styles  */
     </style>
-
+    <!-- <paper-spinner></paper-spinner> -->
       <!---On sale Product  starts here ------>
   <!-- display the title name -->
 <div class="title-box">
@@ -81,7 +82,7 @@ auto is use when we want to display the data on page load -->
           <!--  displaying the product price-->
           <h5>₹[[item.price]]</h5>
           <!-- Button for Addto cart starts here -->
-          <paper-button raised on-click="addToCartBtn" class="custom indigo" id="addToCartBtn">Add to Cart</paper-button>
+          <paper-button raised on-click="addToCartBtn"  class="custom indigo" id="addToCartBtn">Add to Cart</paper-button>
           <!-- Button for Addto cart ends here -->
         </div>
         

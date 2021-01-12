@@ -92,7 +92,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       padding-bottom: 15px;
       margin-bottom: 15px;
       border-bottom: 1px solid #eee;
-      font-family: 'Lato', sans-serif;
+      font-family: 'roboto', sans-serif;
     }
     .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
       text-indent: -9999px;
@@ -117,7 +117,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
     .product .product-details .product-description {
       margin: 5px 20px 5px 0;
       line-height: 1.4em;  
-      font-family: 'Lato', sans-serif;
+      font-family: system-ui;
     }
     .product .product-quantity input {
       width: 40px;
@@ -147,6 +147,7 @@ $_documentContainer.innerHTML = `<dom-module id="shopping-cart-styles">
       clear: both;
       width: 79%;
       text-align: right;
+      font-family: 'roboto', sans-serif;
     }
     .totals .totals-item .totals-value {
       float: right;

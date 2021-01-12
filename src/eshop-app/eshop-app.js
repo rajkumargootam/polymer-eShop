@@ -90,7 +90,7 @@ class EshopApp extends PolymerElement {
 
          <!-- Main content -->
          <app-header-layout has-scrolling-region="">
-           <app-header slot="header" condenses="" reveals="" effects="waterfall">
+           <app-header id="header" slot="header" condenses="" reveals="" effects="waterfall">
              <app-toolbar>
                <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
                <a href="[[rootPath]]MyShoppingCart" id="shoppinCart"><paper-icon-button id="shoppingIcon" icon="shopping-cart" on-top="shoppinCart"></paper-icon-button>
@@ -160,13 +160,16 @@ class EshopApp extends PolymerElement {
 //To hide the app drawer in the home,login page,Mypayment,MySuccessfully
     if (page = 'login') {} else {
                 this.$.drawer.style.display = "block";
+                this.$.header.style.display = "none";
             }
     if (page = 'MyPayment') {} else {
                 this.$.drawer.style.display = "block";
+                this.$.header.style.display = "none";
 
             }
     if (page = 'MySuccessfully') {} else {
                 this.$.drawer.style.display = "block";
+                this.$.header.style.display = "none";
 
             }
     if (page = 'home') {} else {
@@ -187,6 +190,7 @@ class EshopApp extends PolymerElement {
       case 'myLogin':
         import('./my-login.js');
         this.$.drawer.style.display = "none";
+        this.$.header.style.display = "none";
         break;
       case 'home':
         import('./my-home.js');
@@ -200,10 +204,12 @@ class EshopApp extends PolymerElement {
       case 'MyPayment':
         import('./my-payment.js');
         this.$.drawer.style.display = "none";
+        this.$.header.style.display = "none";
         break;
       case 'MySuccessfully':
         import('./my-successfully.js');
         this.$.drawer.style.display = "none";
+        this.$.header.style.display = "none";
         break;
       case 'view404':
         import('./my-view404.js');

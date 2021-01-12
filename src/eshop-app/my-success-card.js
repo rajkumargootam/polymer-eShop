@@ -24,6 +24,24 @@ class MySuccessCard extends PolymerElement {
 
     return html`
     <style include="">
+    :host {
+      background: #F5F5F5;
+  }
+    
+    .circle-bg{
+      border-radius:200px;
+      height:200px;
+      width:200px;
+      background: orange;
+      margin:0 auto;
+    }
+   
+    
+
+    i.checkmark{
+      color: #FFF;
+    }
+
     /*success css Starts Here*/
               body {
             text-align: center;
@@ -68,11 +86,11 @@ class MySuccessCard extends PolymerElement {
 <body>
       <!---success card  starts here ------>
       <div class="card-content">
-      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+      <div class="circle-bg">
         <i class="checkmark">✓</i>
       </div>
         <h1>Success</h1>
-        <p>Your order has placed successfully <br/> it will delever in 3 working days.</p>
+        <p>Your order has placed successfully.</p>
       </div>
       <!---success card Ends Here ------>
   </body>

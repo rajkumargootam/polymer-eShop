@@ -47,6 +47,10 @@ export class AddToCart extends PolymerElement {
         type: Number,
         value: 0,
       }
+      // spinner: {
+      //   type: string,
+      //   vale: "active"
+      // }
 
      }
    }
@@ -84,8 +88,8 @@ export class AddToCart extends PolymerElement {
       window.localStorage.setItem("setProductItemsInLocalStorage", JSON.stringify(this.productList));
 
       //reload the page to set the values in shopping-cart
-      location.reload();
-
+     // location.reload();
+//this.spinner =
 
 // Getting productlist count       
       this.count = this.productList.length;

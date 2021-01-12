@@ -40,7 +40,10 @@ class MyLogin extends PolymerElement {
     return html`
       <style include="login-styles">
 
-
+      a#shoppinCart {
+        display: none;
+    }
+    
   </style>
 
 <!--  navigation path from one page to another -->
