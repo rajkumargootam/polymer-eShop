@@ -9,11 +9,6 @@ $_documentContainer.innerHTML = `<dom-module id="login-styles">
       color: red;
     }
 
- #shoppinCart {
-      display: none;
-      color:#FFF;
-    }   
-
     iron-pages{
       display:none !important;
     }
@@ -28,7 +23,6 @@ $_documentContainer.innerHTML = `<dom-module id="login-styles">
       margin-top: 3%;
     }
 
-
     paper-button.indigo {
       background-color: var(--paper-indigo-500);
       color: white;
@@ -41,6 +35,11 @@ $_documentContainer.innerHTML = `<dom-module id="login-styles">
         color: white;
         background-color: bisque;
       }
+
+      #shoppinCart {
+        display: none;
+        color:#FFF;
+      }  
 
     .login-form {
       position: absolute;

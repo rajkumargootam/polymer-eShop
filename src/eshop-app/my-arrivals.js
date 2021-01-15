@@ -38,7 +38,8 @@ class MyArrivals extends AddToCart {
       <style include="commom-product-styles">
         /* import custom styles and included shared-products-style  */
       </style>
-
+      <!--  navigation path from one page to another -->
+      <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location> 
       <!-- To read the json data  using iron-ajax starts here
       auto is use when we want to display the data on page load -->
 

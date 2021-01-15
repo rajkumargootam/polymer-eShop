@@ -26,8 +26,8 @@ import './shopping-cart-styles.js'
 import'./my-footer.js';
 
 
-
 class MyShoppingCart extends PolymerElement {
+
   static get template() {
     return html`
     <!-- css code is exeting in the external file and we are refering that file in the style tag -->
@@ -38,7 +38,6 @@ class MyShoppingCart extends PolymerElement {
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
 
     <body >
-
       
       <!-- Button for Addto cart starts here -->
       <paper-button  on-click="_redirecBtn"  raised class="continueShopping"><iron-icon icon="shopping-cart"></iron-icon>Continue Shopping </paper-button>
@@ -56,7 +55,7 @@ class MyShoppingCart extends PolymerElement {
       </div>
   <!-- taable header names starst here -->
 <!-- itterating the UI element and display the data starts here -->
-<template is="dom-repeat" items="{{productListItem}}">
+<template is="dom-repeat" items="[[productListItem]]">
 <!-- Displaying product img starts here -->
       <div class="product">
         <div class="product-image">
@@ -129,7 +128,7 @@ class MyShoppingCart extends PolymerElement {
   static get properties() { return {
 
     //productItem for list of the products
-      productListItem:{
+    productListItem:{
         type: Array,
         notify: true,
         value: null
@@ -152,7 +151,7 @@ class MyShoppingCart extends PolymerElement {
      // Getting count from window object
      count: {
       type: Number,
-      value: 0,
+      value: 0
     },
     //final total price  
     totalPrice: {
@@ -165,10 +164,12 @@ class MyShoppingCart extends PolymerElement {
 
 
 
+  
   ready() {
       super.ready();
 //for displying product in cart page
     this.productListItem = JSON.parse(window.localStorage.getItem('setProductItemsInLocalStorage'));
+    console.log('this.productListItem :' +this.productListItem);
 // total calculated amount in summarytotalamount
     this.totalPrice = window.localStorage.getItem('totalprice');
 // total calculated amount in summarytotalamount
@@ -178,6 +179,8 @@ class MyShoppingCart extends PolymerElement {
 // total calculated amount in summarytotalamount
     this.productTotalPrice = Math.round(Number(this.totalPrice) + Number(this.deliveryCharges) + Number(this.tax));
   }
+
+
 
 // Removing the product from the add to cart page
 _removeFn(e){
@@ -217,10 +220,12 @@ _removeFn(e){
   }
 
 
-// checkout function
-_CheckboxBtn(){
-  this.set('route.path', '/myLogin');
-}
+  // checkout function
+  _CheckboxBtn(){
+    localStorage.clear();
+    window.localStorage.setItem('count', this.count);
+    this.set('route.path', '/myLogin');
+  }
 
 }
 /*register element to the browser*/

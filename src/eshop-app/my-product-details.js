@@ -1,4 +1,13 @@
 /**
+ *Import the Polymer library
+ * Import the Polymer paper-card
+ * Import the Polymer paper-button
+ * Import the Polymer paper-icon-button
+ * Import the Polymer iron-icons
+ * Imported the product-details-styles.js
+ */
+
+/**
  * @license
  * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
  * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -33,8 +42,8 @@ class MyProductDetails extends PolymerElement {
 
       </style>
 
-
-
+      <!--  navigation path from one page to another -->
+      <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location> 
 <div id="single-product">
   <div class="flex-container">
       <div class="product-content flex-item-left">
@@ -72,7 +81,6 @@ class MyProductDetails extends PolymerElement {
 			<p>The first-generation iPhone was extremely thin (only 11.6 mm thick) but wider and longer than many comparable devices. The display area was a 3.5 inch-wide screen with a multitouch interface and unusually high resolution (160 pixels per inch). Unlike most other smartphones at the time, iPhone did not use a hardware keyboard or a stylus. Instead, a user relied on multiple taps and drags to navigate through iPhone OS 1.0, a mobile version of Apple's OS X for Mac computers. Like the iPod, the iPhone synchronized data with a user's personal computer via a USB port, using Apple iTunes as client software.</p>
 			<hr>
 		</div>
-
 <!------------------------------ similar Product starts here  --------------------->
 <my-similar-products></my-similar-products>
 <!------------------------------- similar Product ends here --------------------->
@@ -83,15 +91,6 @@ class MyProductDetails extends PolymerElement {
 
     `;
   }
-  static get properties() {
-    return {
-      section: {
-        type: String,
-        value:'MyProductDetails',
-        notify: true
-      }
-    };
-  }
 
 
 

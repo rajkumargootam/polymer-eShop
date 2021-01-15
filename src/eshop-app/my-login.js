@@ -2,7 +2,9 @@
  *Import the Polymer library
  * Import the Polymer paper-card
  * Import the Polymer paper-button
+ * Import the Polymer iron-form
  * Import the Polymer paper-input
+ * Import the login-styles.js
  */
 
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
@@ -46,34 +48,33 @@ class MyLogin extends PolymerElement {
     
   </style>
 
-<!--  navigation path from one page to another -->
-<app-location route="{{route}}"></app-location>
-<!-- Login form starts here -->
-<div class="login-form">
-<iron-form id="formOne" on-iron-form-response="onResponse">
-<form method="post" action="https://httpbin.org/post" is="iron-form">
-<!-- To display card I'm using paper card -->
-  <paper-card class="rate">
-  <!-- Content inside the paper card -->
-    <div class="card-content">
-    <h3>Login</h3>
-    <!-- Paper input for text fields using polymer component -->
-      <paper-input id="User_name" name="user" float-label label="Username" value="{{username}}" required auto-validate pattern="[a-zA-Z]*" error-message="Please enter the username!"></paper-input>
-      <paper-input id="Password" type="password" name="Password" float-label label="Password" value="{{password}}" required auto-validate error-message="Please enter the password!"></paper-input>
-    <!--  Paper input for text fields from polymer component -->
-    </div>
-    <div class="error-text">{{errormsg}}</div>
-    <div class="card-actions">
-        <!-- Paper buuton for login using polymer component -->
-      <paper-button raised  class="custom indigo" on-tap="submitHandler">Login</paper-button>
-    </div>
-  </paper-card>
-  <!-- To display card I'm using paper card -->
-  </form>
-  </iron-form>
-</div>
-
-<!-- Login form ends here -->
+  <!--  navigation path from one page to another -->
+  <app-location route="{{route}}"></app-location>
+  <!-- Login form starts here -->
+  <div class="login-form">
+    <iron-form id="formOne" on-iron-form-response="onResponse">
+      <form method="post" action="https://httpbin.org/post" is="iron-form">
+        <!-- To display card I'm using paper card -->
+        <paper-card class="rate">
+          <!-- Content inside the paper card -->
+          <div class="card-content">
+            <h3>Login</h3>
+            <!-- Paper input for text fields using polymer component -->
+            <paper-input id="User_name" name="user" float-label label="Username" value="{{username}}" required auto-validate pattern="[a-zA-Z]*" error-message="Please enter the username!"></paper-input>
+            <paper-input id="Password" type="password" name="Password" float-label label="Password" value="{{password}}" required auto-validate error-message="Please enter the password!"></paper-input>
+            <!--  Paper input for text fields from polymer component -->
+          </div>
+          <div class="error-text">{{errormsg}}</div>
+          <div class="card-actions">
+            <!-- Paper buuton for login using polymer component -->
+            <paper-button raised class="custom indigo" on-tap="submitHandler">Login</paper-button>
+          </div>
+        </paper-card>
+        <!-- To display card I'm using paper card -->
+      </form>
+    </iron-form>
+  </div>
+  <!-- Login form ends here -->
     `;
   }
 
@@ -105,13 +106,14 @@ class MyLogin extends PolymerElement {
    this.$.formOne.submit();
    };
 
+   //Getting response
    onResponse(e){
     console.log('e.detail.response.form', e.detail.response.form)
 
     this.formData = e.detail.response.form
     console.log('this.formData', this.formData);
 
-    if(this.formData.user != 'rajkumar' && this.formData.password != 'admin'){
+    if(this.formData.user != 'rajkumar' && this.formData.password != '123456'){
       this.errormsg = 'invalid credentials';
       console.log('this.formData invalid')
     }else{

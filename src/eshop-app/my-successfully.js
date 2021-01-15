@@ -3,7 +3,6 @@
  * Import the my-payment-crad.js
  */
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import'./my-payment-crad.js';
 import'./my-success-card.js';
 
 

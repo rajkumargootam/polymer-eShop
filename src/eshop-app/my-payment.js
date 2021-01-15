@@ -1,9 +1,13 @@
 /**
  *Import the Polymer library
- * Import the my-payment-crad.js
+ * Import the gold-cc-input
+ * Import the polymer gold-cc-expiration-input
+ * Import the polymer paper-button
  */
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import'./my-payment-crad.js';
+import '@polymer/gold-cc-input/gold-cc-input.js';
+import '@polymer/gold-cc-expiration-input/gold-cc-expiration-input.js';
+import '@polymer/paper-button/paper-button.js';
 
 
 /** Creating the new element as a class
@@ -30,7 +34,7 @@ class MyPayment extends PolymerElement {
         background-color: var(--paper-indigo-500);
         color: white;
         --paper-button-raised-keyboard-focus: {
-          background-color: var(--paper-pink-a200) !important;
+          background-color: var(--paper-indigo-500) !important;
           color: white !important;
         };
       }
@@ -78,6 +82,16 @@ class MyPayment extends PolymerElement {
 
   width: 80%;
   }
+
+  /*Removing the outline for the iput fields Starts Here*/
+  gold-cc-input{
+    outline: none;
+  }
+
+  gold-cc-expiration-input{
+    outline: none;
+  }
+  /*Removing the outline for the iput fields Ends Here*/
     </style>
 
 
@@ -91,7 +105,22 @@ class MyPayment extends PolymerElement {
       <!-- Content inside the paper card -->
         <div class="card-content">
         <h3>Payment</h3>
-          <my-payment-card></my-payment-card>
+        <!-- credicard input field starts Here -->
+        <gold-cc-input
+             auto-validate
+             label="Card number"
+             value ="4111 1111 1111 1111"
+             error-message="Enter valid visa or mastercard"
+             card-types='["visa", "mastercard"]'
+             required >
+      </gold-cc-input>
+             <!-- credicard input field Ends Here-->
+       <!-- expiredate input field Starts Here-->
+     <gold-cc-expiration-input label="Date"></gold-cc-expiration-input>
+       <!-- expiredate input field Ends Here-->
+       <!-- cvv code starts here -->
+       <paper-input name="cardCvv"  placeholder="CVV"  auto-validate pattern="[0-9]{3}" maxlength="3" error-message="CVV" required ></paper-input>
+       <!-- cvv code ends here -->
         </div>
         <div class="card-actions">
             <!-- Paper buuton for login using polymer component -->
@@ -101,16 +130,12 @@ class MyPayment extends PolymerElement {
       <!-- To display card I'm using paper card -->
     </div>
     <!-- payment form ends here -->
-
-      <!---Payment  starts here ------>
-      <div class="center">
-
-    </div>
-      <!---payment ends here ------>
     `;
     }
+    
 _payment(){
-        this.set('route.path', '/MySuccessfully');
+
+    this.set('route.path', '/MySuccessfully');
 }
 
   }
